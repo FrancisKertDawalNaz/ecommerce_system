@@ -37,4 +37,49 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('success', 'Account created! You may now log in.');
     }
+
+    public function processLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $user = Register::where('email', $request->email)->first();
+
+        if ($user && Hash::check($request->password, $user->password)) {
+            // Optionally store user info in session
+            session([
+                'loggedUser' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                ]
+            ]);
+
+
+            // Redirect to user dashboard
+            return redirect()->route('user.dashboard')->with('success', 'Login successful!');
+        } else {
+            return redirect()->route('login')->with('error', 'Invalid email or password.');
+        }
+    }
+
+    public function dashboard()
+    {
+        return view('user.dashboard');
+    }
+
+    public function logout(Request $request)
+    {
+        // Manually forget the custom session
+        $request->session()->forget('loggedUser');
+
+        // Invalidate the session
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        // Redirect to login
+        return redirect()->route('login')->with('success', 'You have been logged out.');
+    }
 }

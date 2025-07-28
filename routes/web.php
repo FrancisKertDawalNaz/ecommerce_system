@@ -13,3 +13,13 @@ Route::post('/login', [AuthController::class, 'processLogin'])->name('login.proc
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'processRegister'])->name('register.process');
 
+Route::get('/user/dashboard', function () {
+    return view('user.dashboard');
+})->name('user.dashboard');
+
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+
+
+// Logout route
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
