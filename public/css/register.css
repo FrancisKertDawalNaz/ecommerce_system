@@ -1,0 +1,27 @@
+/* Apply font */
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+/* Background image */
+.register-container {
+    background: url('/images/login.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Form styling */
+.form-wrapper {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
