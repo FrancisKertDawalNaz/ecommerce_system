@@ -24,6 +24,8 @@ Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard'
 Route::get('/shop',[AuthController::class, 'shop'])->name('shop');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
+Route::get('/orders', [AuthController::class, 'orders'])->name('orders');
+
 Route::get('/products', [ProductApiController::class, 'index']);
 
 // Logout route

@@ -75,6 +75,10 @@ class AuthController extends Controller
         return view('user.shop');
     }
 
+    public function orders(){
+        return view('user.orders');
+    }
+
     public function logout(Request $request)
     {
         // Manually forget the custom session
