@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Api\ProductApiController;
+use App\Http\Controllers\ShopController;
 
 Route::get('/', function () {
     return view('loading');
@@ -19,6 +21,10 @@ Route::get('/user/dashboard', function () {
 
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
+Route::get('/shop',[AuthController::class, 'shop'])->name('shop');
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+
+Route::get('/products', [ProductApiController::class, 'index']);
 
 // Logout route
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
