@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 py-3" style="font-family: 'Poppins', sans-serif;">
     <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="#">
-        <i class="fas fa-store me-2 fa-lg text-primary"></i> 
+        <i class="fas fa-store me-2 fa-lg text-primary"></i>
         <span class="fs-5">ShopDashboard</span>
     </a>
 
@@ -22,25 +22,57 @@
 
         {{-- Right Icons --}}
         <ul class="navbar-nav ms-auto align-items-center">
-            {{-- Cart --}}
-            <li class="nav-item me-3">
-                <a class="nav-link position-relative" href="#">
+            {{-- Cart Dropdown --}}
+            <li class="nav-item dropdown me-3">
+                <a class="nav-link position-relative" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-shopping-cart fa-lg text-primary"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                         3
                     </span>
                 </a>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm p-3" aria-labelledby="cartDropdown" style="width: 300px;">
+                    <h6 class="dropdown-header text-primary">🛒 Cart</h6>
+                    <li class="d-flex align-items-center mb-2">
+                        <img src="{{ asset('images/products/one.jpg') }}" class="rounded me-2" width="40" height="40">
+                        <div class="flex-grow-1">
+                            <div class="fw-semibold">Product A</div>
+                            <small class="text-muted">₱500.00 × 1</small>
+                        </div>
+                        <div class="text-end ms-2 fw-semibold">₱500.00</div>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a href="#" class="btn btn-sm btn-primary w-100 rounded-pill">View Cart</a></li>
+                </ul>
             </li>
 
-            {{-- Notifications --}}
-            <li class="nav-item me-3">
-                <a class="nav-link position-relative" href="#">
+            {{-- Notification Dropdown --}}
+            <li class="nav-item dropdown me-3">
+                <a class="nav-link position-relative" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-bell fa-lg text-primary"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
                         5
                     </span>
                 </a>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm p-3" aria-labelledby="notifDropdown" style="width: 300px;">
+                    <h6 class="dropdown-header text-primary">🔔 Notifications</h6>
+                    <li class="mb-2">
+                        <div class="small text-muted">📦 Order #ORD1234 shipped</div>
+                    </li>
+                    <li class="mb-2">
+                        <div class="small text-muted">💬 New message received</div>
+                    </li>
+                    <li class="mb-2">
+                        <div class="small text-muted">🔥 Hot deals available now!</div>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a href="#" class="btn btn-sm btn-outline-secondary w-100 rounded-pill">View All</a></li>
+                </ul>
             </li>
+
 
             {{-- User Dropdown --}}
             <li class="nav-item dropdown">
@@ -52,7 +84,9 @@
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                     <li><a class="dropdown-item" href="#">👤 Profile</a></li>
                     <li><a class="dropdown-item" href="#">⚙️ Settings</a></li>
-                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

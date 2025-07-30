@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link text-dark px-3 py-2 rounded hover-effect">
+                <a href="{{ route('setting') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
                     <i class="fas fa-cog text-primary me-2"></i> <span class="sidebar-label">Settings</span>
                 </a>
             </li>
