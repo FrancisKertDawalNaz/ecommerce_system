@@ -26,6 +26,8 @@ Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
 Route::get('/orders', [AuthController::class, 'orders'])->name('orders');
 
+Route::get('/wishlist', [AuthController::class, 'wishlist'])->name('wishlist');
+
 Route::get('/products', [ProductApiController::class, 'index']);
 
 // Logout route

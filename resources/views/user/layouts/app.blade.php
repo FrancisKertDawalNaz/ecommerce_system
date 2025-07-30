@@ -12,8 +12,8 @@
 
     <!-- Your custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
-     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-     <link rel="stylesheet" href="{{ asset('css/scroll.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="https://kit.fontawesome.com/your_kit_code.js" crossorigin="anonymous"></script>
     <!-- Bootstrap 5 JS (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>

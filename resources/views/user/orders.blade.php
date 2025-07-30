@@ -2,7 +2,10 @@
 
 @section('content')
 <div class="content-scrollable px-4 py--5" style="font-family: 'Poppins', sans-serif;">
-    <h2 class="fw-bold mb-4 text-primary">My Orders</h2>
+    <h2 class="fw-bold mb-4 text-primary">
+        <i class="fas fa-shopping-bag me-2 text-primary"></i> My Orders
+    </h2>
+
 
     @for ($i = 1; $i <= 3; $i++)
         <div class="card mb-4 shadow-sm border-0 rounded-4">
