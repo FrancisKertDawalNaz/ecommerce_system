@@ -1,7 +1,7 @@
 @extends('user.layouts.app')
 
 @section('content')
-<div class="container" style="font-family: 'Poppins', sans-serif;">
+<div class="content-scrollable px-4 py--5" style="font-family: 'Poppins', sans-serif;">
     <h2 class="fw-bold mb-4 text-primary">🛒 Shop</h2>
 
     <div class="row g-4">

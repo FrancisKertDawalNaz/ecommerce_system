@@ -34,7 +34,7 @@
             </li>
         </ul>
 
-        <form action="{{ route('logout') }}" method="POST" class="mt-auto">
+        <form action="{{ route('logout') }}" method="POST" class="mt-5">
             @csrf
             <button type="submit" class="btn btn-outline-danger w-100">
                 <i class="fas fa-sign-out-alt me-2"></i> <span class="sidebar-label">Logout</span>

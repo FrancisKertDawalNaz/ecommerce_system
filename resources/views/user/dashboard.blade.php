@@ -61,14 +61,14 @@
 
     <!-- Recent Orders Table -->
     <div class="card mt-5 shadow-sm border-0 rounded-4">
-        <div class="card-header bg-white fw-semibold d-flex align-items-center gap-2">
-            <i class="fas fa-clock text-primary"></i>
+        <div class="card-header bg-white fw-semibold d-flex align-items-center gap-2 border-bottom">
+            <i class="fas fa-clock text-primary fs-5"></i>
             <span class="fs-5 text-primary">Recent Orders</span>
         </div>
 
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0 table-striped">
+                <table class="table table-hover align-middle mb-0">
                     <thead class="table-light text-uppercase small text-secondary">
                         <tr>
                             <th scope="col">Order ID</th>
@@ -79,24 +79,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="fw-medium">#ORD-1001</td>
+                        <tr class="border-bottom">
+                            <td class="fw-semibold text-primary">#ORD-1001</td>
                             <td>July 25, 2025</td>
-                            <td><span class="badge bg-success rounded-pill">Delivered</span></td>
-                            <td>₱1,250.00</td>
+                            <td>
+                                <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1">
+                                    <i class="fas fa-check-circle me-1"></i> Delivered
+                                </span>
+                            </td>
+                            <td><strong>₱1,250.00</strong></td>
                             <td class="text-end">
-                                <a href="#" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                <a href="#" class="btn btn-sm btn-outline-primary rounded-pill px-3 shadow-sm">
                                     <i class="fas fa-eye me-1"></i> View
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="fw-medium">#ORD-1002</td>
+                        <tr class="border-bottom">
+                            <td class="fw-semibold text-primary">#ORD-1002</td>
                             <td>July 26, 2025</td>
-                            <td><span class="badge bg-warning text-dark rounded-pill">Pending</span></td>
-                            <td>₱560.00</td>
+                            <td>
+                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill px-3 py-1">
+                                    <i class="fas fa-hourglass-half me-1"></i> Pending
+                                </span>
+                            </td>
+                            <td><strong>₱560.00</strong></td>
                             <td class="text-end">
-                                <a href="#" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                <a href="#" class="btn btn-sm btn-outline-primary rounded-pill px-3 shadow-sm">
                                     <i class="fas fa-eye me-1"></i> View
                                 </a>
                             </td>
@@ -107,7 +115,5 @@
             </div>
         </div>
     </div>
-
-
 </div>
 @endsection

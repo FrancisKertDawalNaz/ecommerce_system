@@ -1,7 +1,7 @@
 @extends('user.layouts.app')
 
 @section('content')
-<div class="content-scrollable px-4 py-4" style="font-family: 'Poppins', sans-serif;">
+<div class="content-scrollable px-4 py--5" style="font-family: 'Poppins', sans-serif;">
     <h2 class="fw-bold mb-4 text-primary">My Orders</h2>
 
     @for ($i = 1; $i <= 3; $i++)
@@ -19,7 +19,9 @@
         <div class="card-body">
             <!-- Item list inside the order -->
             <div class="d-flex align-items-center mb-3">
-                <img src="https://via.placeholder.com/80" class="rounded border" alt="Product Image">
+                <img src="{{ asset('images/products/one.jpg') }}" class="rounded border"
+                    alt="Product Image"
+                    style="width: 80px; height: 80px; object-fit: cover;" alt="Product Image">
                 <div class="ms-3">
                     <h6 class="mb-1">Sample Product A</h6>
                     <small class="text-muted">₱500.00 × 1</small>
@@ -30,7 +32,9 @@
             </div>
 
             <div class="d-flex align-items-center">
-                <img src="https://via.placeholder.com/80" class="rounded border" alt="Product Image">
+                <img src="https://via.placeholder.com/80" class="rounded border"
+                    alt="Product Image"
+                    style="width: 80px; height: 80px; object-fit: cover;" alt="Product Image">
                 <div class="ms-3">
                     <h6 class="mb-1">Sample Product B</h6>
                     <small class="text-muted">₱250.00 × 2</small>
@@ -53,16 +57,4 @@
         </div>
 </div>
 @endfor
-
-<!-- Static Pagination -->
-<nav>
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled"><a class="page-link" href="#">«</a></li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">»</a></li>
-    </ul>
-</nav>
-</div>
 @endsection
