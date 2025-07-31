@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 py-3" style="font-family: 'Poppins', sans-serif;">
     <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="#">
         <i class="fas fa-store me-2 fa-lg text-primary"></i>
-        <span class="fs-5">Shop Dashboard</span>
+        <span class="fs-5">Admin Shop Dashboard</span>
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -77,7 +77,7 @@
             {{-- User Dropdown --}}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="fw-medium text-dark">{{ session('loggedUser')->name ?? 'User' }}</span>
+                    <span class="fw-medium text-dark">{{ session('loggedUser')->name ?? 'Admin' }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                     <li><a class="dropdown-item" href="{{ route('setting') }}">👤 Profile</a></li>

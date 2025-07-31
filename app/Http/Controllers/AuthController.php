@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\admin_register;
 use App\Models\Register;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -36,6 +36,32 @@ class AuthController extends Controller
         ]);
 
         return redirect()->route('login')->with('success', 'Account created! You may now log in.');
+    }
+
+    public function adminRegister(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $user = admin_register::where('email', $request->email)->first();
+
+        if ($user && Hash::check($request->password, $user->password)) {
+            // Optionally store user info in session
+            session([
+                'loggedUser' => [
+                    'id' => $user->id,
+                    'email' => $user->email,
+                ]
+            ]);
+
+
+            // Redirect to admin dashboard
+            return redirect()->route('admin.admin_dashboard')->with('success', 'Login successful!');
+        } else {
+            return redirect()->route('Mainadmin')->with('error', 'Invalid email or password.');
+        }
     }
 
     public function processLogin(Request $request)
@@ -100,4 +126,13 @@ class AuthController extends Controller
         // Redirect to login
         return redirect()->route('login')->with('success', 'You have been logged out.');
     }
+
+    public function Mainadmin(){
+        return view ('admin.auth.admin_login');
+    }
+
+    public function admindashboard(){
+        return view ('admin.admin_dashboard');
+    }
+
 }
