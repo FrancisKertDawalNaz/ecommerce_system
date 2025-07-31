@@ -4,55 +4,63 @@
 <div class="container py-4">
     <h1 class="fw-bold text-primary mb-3">Welcome to the Dashboard</h1>
     <!-- Dashboard Summary Cards -->
-    <div class="row g-4">
+    <div class="row g-4 mb-4">
         <!-- Total Orders -->
-        <div class="col-md-3">
-            <div class="card shadow-sm border-0 bg-primary bg-opacity-75 text-white rounded-4">
-                <div class="card-body d-flex align-items-center justify-content-between">
-                    <div>
-                        <h6 class="mb-1">Total Orders</h6>
-                        <h3 class="fw-bold">12</h3>
+        <div class="col-md-3 col-sm-6">
+            <div class="card border-primary shadow-sm rounded-4 p-3">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="bg-primary text-white rounded-circle p-3 me-3">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
                     </div>
-                    <i class="fas fa-shopping-cart fa-2x opacity-75"></i>
+                    <div>
+                        <h6 class="mb-1 text-secondary">Total Orders</h6>
+                        <h3 class="fw-bold mb-0">12</h3>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Delivered -->
         <div class="col-md-3">
-            <div class="card shadow-sm border-0 bg-success bg-opacity-75 text-white rounded-4">
-                <div class="card-body d-flex align-items-center justify-content-between">
-                    <div>
-                        <h6 class="mb-1">Delivered</h6>
-                        <h3 class="fw-bold">8</h3>
+            <div class="card border-primary shadow-sm rounded-4 p-3">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="bg-success text-white rounded-circle p-3 me-3">
+                        <i class="fas fa-truck fa-lg"></i>
                     </div>
-                    <i class="fas fa-truck fa-2x opacity-75"></i>
+                    <div>
+                        <h6 class="mb-1 text-secondary">Delivered</h6>
+                        <h3 class="fw-bold mb-0">8</h3>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Pending -->
         <div class="col-md-3">
-            <div class="card shadow-sm border-0 bg-warning bg-opacity-75 text-white rounded-4">
-                <div class="card-body d-flex align-items-center justify-content-between">
-                    <div>
-                        <h6 class="mb-1">Pending</h6>
-                        <h3 class="fw-bold">3</h3>
+            <div class="card border-primary shadow-sm rounded-4 p-3">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="bg-warning text-white rounded-circle p-3 me-3">
+                        <i class="fas fa-clock fa-lg"></i>
                     </div>
-                    <i class="fas fa-clock fa-2x opacity-75"></i>
+                    <div>
+                        <h6 class="mb-1 text-secondary">Pending</h6>
+                        <h3 class="fw-bold mb-0">3</h3>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Canceled -->
         <div class="col-md-3">
-            <div class="card shadow-sm border-0 bg-danger bg-opacity-75 text-white rounded-4">
-                <div class="card-body d-flex align-items-center justify-content-between">
-                    <div>
-                        <h6 class="mb-1">Canceled</h6>
-                        <h3 class="fw-bold">1</h3>
+            <div class="card border-primary shadow-sm rounded-4 p-3">
+                <div class="card-body d-flex align-items-center gap-3">
+                    <div class="bg-danger text-white rounded-circle p-3 me-3">
+                        <i class="fas fa-times-circle fa-lg"></i>
                     </div>
-                    <i class="fas fa-times-circle fa-2x opacity-75"></i>
+                    <div>
+                        <h6 class="mb-1 text-secondary">Canceled</h6>
+                        <h3 class="fw-bold mb-0">1</h3>
+                    </div>
                 </div>
             </div>
         </div>

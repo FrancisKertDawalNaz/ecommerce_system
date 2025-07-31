@@ -6,12 +6,12 @@
 
     <ul class="nav flex-column gap-2">
         <li class="nav-item">
-            <a href="#" class="nav-link text-dark px-3 py-2 rounded hover-effect">
+            <a href="{{ route('admindashboard') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
                 <i class="fas fa-chart-line me-2 text-primary"></i> Dashboard
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-dark px-3 py-2 rounded hover-effect">
+            <a href="#" class="nav-link text-dark px-3 py-2 rounded hover-effect  border-primary">
                 <i class="fas fa-box-open me-2 text-primary"></i> Products
             </a>
         </li>
@@ -42,7 +42,7 @@
         </li>
     </ul>
     <hr class="my-4 text-muted"> 
-    <form action="{{ route('adminlogout') }}" method="POST" class="mt-auto pt-4">
+    <form action="{{ route('adminlogout') }}" method="POST" class="mt-3 pt-1">
         @csrf
         <button type="submit" class="btn btn-outline-danger w-100">
             <i class="fas fa-sign-out-alt me-2"></i> Logout

@@ -26,9 +26,6 @@
             <li class="nav-item dropdown me-3">
                 <a class="nav-link position-relative" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-shopping-cart fa-lg text-primary"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        3
-                    </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm p-3" aria-labelledby="cartDropdown" style="width: 300px;">
                     <h6 class="dropdown-header text-primary">🛒 Cart</h6>
@@ -51,9 +48,6 @@
             <li class="nav-item dropdown me-3">
                 <a class="nav-link position-relative" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-bell fa-lg text-primary"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
-                        5
-                    </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm p-3" aria-labelledby="notifDropdown" style="width: 300px;">
                     <h6 class="dropdown-header text-primary">🔔 Notifications</h6>

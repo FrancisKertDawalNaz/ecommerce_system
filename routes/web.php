@@ -31,4 +31,5 @@ Route::post('/Mainadmin', [AuthController::class, 'adminRegister'])->name('admin
 Route::get('/admin/dashboard', function () {
     return view('admin.admin_dashboard');
 })->name('admin.admin_dashboard');
+Route::get('/admin/dashboard', [AuthController::class, 'admindashboard'])->name('admindashboard');
 Route::post('/adminlogout', [AuthController::class, 'adminlogout'])->name('adminlogout');
