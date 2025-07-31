@@ -24,12 +24,8 @@ Route::get('/wishlist', [AuthController::class, 'wishlist'])->name('wishlist');
 Route::get('/setting', [AuthController::class, 'setting'])->name('setting');
 Route::get('/products', [ProductApiController::class, 'index']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 //admin
 Route::get('/Mainadmin',[AuthController::class,'Mainadmin'])->name('Mainadmin');
 Route::post('/Mainadmin', [AuthController::class, 'adminRegister'])->name('adminlogin.process');
-Route::get('/admin/dashboard', function () {
-    return view('admin.admin_dashboard');
-})->name('admin.admin_dashboard');
 Route::get('/admin/dashboard', [AuthController::class, 'admindashboard'])->name('admindashboard');
 Route::post('/adminlogout', [AuthController::class, 'adminlogout'])->name('adminlogout');
