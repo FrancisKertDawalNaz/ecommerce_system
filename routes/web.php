@@ -27,5 +27,5 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //admin
 Route::get('/Mainadmin',[AuthController::class,'Mainadmin'])->name('Mainadmin');
 Route::post('/Mainadmin', [AuthController::class, 'adminRegister'])->name('adminlogin.process');
-Route::get('/admin/dashboard', [AuthController::class, 'admindashboard'])->name('admindashboard');
 Route::post('/adminlogout', [AuthController::class, 'adminlogout'])->name('adminlogout');
+Route::get('/admin/dashboard', [AuthController::class, 'admindashboard'])->name('admindashboard');

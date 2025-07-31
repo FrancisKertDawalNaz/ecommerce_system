@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card shadow-sm rounded-4 p-3">
+            <div class="card border-primary shadow-sm rounded-4 p-3">
                 <h5 class="fw-semibold mb-3 text-primary">Orders per Category</h5>
                 <canvas id="categoryChart"></canvas>
             </div>

@@ -58,7 +58,7 @@ class AuthController extends Controller
 
 
             // Redirect to admin dashboard
-            return redirect()->route('admin.admin_dashboard')->with('success', 'Login successful!');
+            return redirect()->route('admindashboard')->with('success', 'Login successful!');
         } else {
             return redirect()->route('Mainadmin')->with('error', 'Invalid email or password.');
         }
@@ -132,7 +132,7 @@ class AuthController extends Controller
     }
 
     public function admindashboard(){
-        return view ('admin.admin_dashboard');
+        return view ('admin.adminmain');
     }
 
     public function adminlogout(Request $request)
