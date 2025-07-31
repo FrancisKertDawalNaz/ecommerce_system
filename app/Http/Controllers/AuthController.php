@@ -135,4 +135,17 @@ class AuthController extends Controller
         return view ('admin.admin_dashboard');
     }
 
+    public function adminlogout(Request $request)
+    {
+        // Manually forget the custom session
+        $request->session()->forget('loggedUser');
+
+        // Invalidate the session
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        // Redirect to admin login
+        return redirect()->route('Mainadmin')->with('success', 'You have been logged out.');
+    }
+
 }

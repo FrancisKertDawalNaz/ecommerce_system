@@ -33,27 +33,13 @@
                 </a>
             </li>
         </ul>
-
+        <hr class="my-4 text-muted"> 
         <form action="{{ route('logout') }}" method="POST" class="mt-5">
             @csrf
             <button type="submit" class="btn btn-outline-danger w-100">
                 <i class="fas fa-sign-out-alt me-2"></i> <span class="sidebar-label">Logout</span>
             </button>
         </form>
-
-        <button id="sidebarToggle" class="btn btn-outline-secondary btn-sm mt-3">
-            <i class="fas fa-bars"></i>
-        </button>
     </div>
 </div>
 
-@push('scripts')
-<script>
-    const toggleBtn = document.getElementById('sidebarToggle');
-    const sidebar = document.getElementById('sidebar');
-
-    toggleBtn?.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-    });
-</script>
-@endpush
