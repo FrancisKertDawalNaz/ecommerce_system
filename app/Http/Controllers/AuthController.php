@@ -85,7 +85,7 @@ class AuthController extends Controller
 
 
             // Redirect to user dashboard
-            return redirect()->route('user.dashboard')->with('success', 'Login successful!');
+            return redirect()->route('dashboard')->with('success', 'Login successful!');
         } else {
             return redirect()->route('login')->with('error', 'Invalid email or password.');
         }

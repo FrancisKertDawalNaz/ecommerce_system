@@ -13,9 +13,6 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'processLogin'])->name('login.process');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'processRegister'])->name('register.process');
-Route::get('/user/dashboard', function () {
-    return view('user.dashboard');
-})->name('user.dashboard');
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 Route::get('/shop',[AuthController::class, 'shop'])->name('shop');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
