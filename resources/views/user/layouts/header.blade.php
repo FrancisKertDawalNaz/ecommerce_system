@@ -83,7 +83,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                     <li><a class="dropdown-item" href="#">👤 Profile</a></li>
-                    <li><a class="dropdown-item" href="#">⚙️ Settings</a></li>
+                    <li><a class="dropdown-item" href="{{ route('setting') }}">⚙️ Settings</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
