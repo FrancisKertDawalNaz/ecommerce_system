@@ -27,6 +27,6 @@ Route::post('/Mainadmin', [AuthController::class, 'adminRegister'])->name('admin
 Route::post('/adminlogout', [AuthController::class, 'adminlogout'])->name('adminlogout');
 Route::get('/admin/dashboard', [AuthController::class, 'admindashboard'])->name('admindashboard');
 Route::get('/adminproduct', [AuthController::class, 'adminproduct'])->name('adminproduct');
-
 Route::get('/admincategories', [AuthController::class, 'admincategories'])->name('admincategories');
 Route::get('/adminorder', [AuthController::class, 'adminorder'])->name('adminorder');
+Route::get('/admincustomer', [AuthController::class, 'admincustomer'])->name('admincustomer');
