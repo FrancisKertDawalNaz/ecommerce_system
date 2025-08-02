@@ -30,3 +30,4 @@ Route::get('/adminproduct', [AuthController::class, 'adminproduct'])->name('admi
 Route::get('/admincategories', [AuthController::class, 'admincategories'])->name('admincategories');
 Route::get('/adminorder', [AuthController::class, 'adminorder'])->name('adminorder');
 Route::get('/admincustomer', [AuthController::class, 'admincustomer'])->name('admincustomer');
+Route::get('/adminreview', [AuthController::class, 'adminreview'])->name('adminreview');

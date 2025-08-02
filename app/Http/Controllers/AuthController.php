@@ -154,6 +154,11 @@ class AuthController extends Controller
         return view('admin.admincustomer');
     }
 
+    public function adminreview()
+    {
+        return view('admin.adminreview');
+    }
+
     public function adminlogout(Request $request)
     {
         // Manually forget the custom session
