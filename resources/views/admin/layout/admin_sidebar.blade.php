@@ -16,7 +16,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-dark px-3 py-2 rounded hover-effect">
+            <a href="{{ route('admincategories') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
                 <i class="fas fa-list me-2 text-primary"></i> Categories
             </a>
         </li>

@@ -27,3 +27,4 @@ Route::post('/Mainadmin', [AuthController::class, 'adminRegister'])->name('admin
 Route::post('/adminlogout', [AuthController::class, 'adminlogout'])->name('adminlogout');
 Route::get('/admin/dashboard', [AuthController::class, 'admindashboard'])->name('admindashboard');
 Route::get('/adminproduct', [AuthController::class, 'adminproduct'])->name('adminproduct');
+Route::get('/admincategories', [AuthController::class, 'admincategories'])->name('admincategories');
