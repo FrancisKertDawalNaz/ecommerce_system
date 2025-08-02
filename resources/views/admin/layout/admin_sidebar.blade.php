@@ -11,7 +11,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-dark px-3 py-2 rounded hover-effect  border-primary">
+            <a href="{{ route('adminproduct') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect  border-primary">
                 <i class="fas fa-box-open me-2 text-primary"></i> Products
             </a>
         </li>
