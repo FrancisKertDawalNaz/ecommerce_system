@@ -2,23 +2,24 @@
 
 @section('content')
 <div class="container mt-4">
+    <!-- Page Header -->
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="fw-bold text-primary mb-0">
             <i class="fas fa-receipt me-2"></i> Orders
         </h2>
-        <button class="btn btn-outline-primary rounded-pill px-4">
+        <button class="btn btn-outline-primary rounded-pill px-4 shadow-sm">
             <i class="fas fa-download me-1"></i> Export
         </button>
     </div>
 
-    <!-- Order Table -->
+    <!-- Orders Table -->
     <div class="card shadow-sm rounded-4 border-0">
-        <div class="card-body p-4">
+        <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-hover align-middle">
+                <table class="table align-middle mb-0">
                     <thead class="table-light">
-                        <tr>
-                            <th scope="col">Order ID</th>
+                        <tr class="text-uppercase small text-muted">
+                            <th scope="col" class="px-4 py-3">Order ID</th>
                             <th scope="col">Customer</th>
                             <th scope="col">Date</th>
                             <th scope="col">Total</th>
@@ -28,24 +29,33 @@
                     </thead>
                     <tbody>
                         <!-- Sample Row -->
-                        <tr>
-                            <td>#ORD12345</td>
-                            <td>Juan Dela Cruz</td>
-                            <td>July 30, 2025</td>
-                            <td>₱2,199.00</td>
+                        <tr class="border-bottom align-middle">
+                            <td class="px-4 py-3 fw-semibold">#ORD12345</td>
                             <td>
-                                <span class="badge bg-warning text-dark">Pending</span>
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-light rounded-circle p-2 me-2">
+                                        <i class="fas fa-user text-primary"></i>
+                                    </div>
+                                    <span>Juan Dela Cruz</span>
+                                </div>
+                            </td>
+                            <td>July 30, 2025</td>
+                            <td class="fw-semibold text-success">₱2,199.00</td>
+                            <td>
+                                <span class="badge rounded-pill bg-warning text-dark px-3 py-2">Pending</span>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-sm btn-primary rounded-pill">
-                                    <i class="fas fa-eye me-1"></i> View
-                                </button>
-                                <button class="btn btn-sm btn-success rounded-pill">
-                                    <i class="fas fa-check me-1"></i> Approve
-                                </button>
+                                <div class="d-flex justify-content-center gap-2">
+                                    <button class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                        <i class="fas fa-eye me-1"></i> View
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success rounded-pill px-3">
+                                        <i class="fas fa-check me-1"></i> Approve
+                                    </button>
+                                </div>
                             </td>
                         </tr>
-                        <!-- Add more rows dynamically here -->
+                        <!-- More rows here -->
                     </tbody>
                 </table>
             </div>
