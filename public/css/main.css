@@ -2,3 +2,47 @@
     height: calc(100vh - 70px); /* Adjust based on height of your navbar/header */
     overflow-y: auto;
 }
+
+.modal-content {
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .modal-header-modern {
+        background: linear-gradient(to right, #0d6efd, #0d6efd);
+        color: #fff;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding: 1.2rem 1.5rem;
+    }
+
+    .modal-body input,
+    .modal-body textarea,
+    .modal-body select {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 10px 15px;
+        font-size: 15px;
+    }
+
+    .form-label {
+        font-weight: 500;
+        margin-bottom: 6px;
+    }
+
+    .btn-modern {
+        background-color: #0d6efd;
+        color: white;
+        font-weight: 600;
+        padding: 10px 24px;
+        border-radius: 10px;
+        border: none;
+        transition: 0.2s ease;
+    }
+
+    .btn-modern:hover {
+        background-color: #1c1255;
+        color: white;
+    }

@@ -6,6 +6,7 @@ use App\Models\admin_register;
 use App\Models\Register;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Product;
 
 class AuthController extends Controller
 {
