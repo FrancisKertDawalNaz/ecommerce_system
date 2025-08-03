@@ -2,43 +2,51 @@
 
 @section('content')
 <div class="container mt-4">
+    <!-- Page Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold mb-4 text-primary">
+        <h2 class="fw-bold text-primary mb-0">
             <i class="fas fa-bag-shopping me-2"></i> Product Management
         </h2>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+        <button class="btn btn-primary px-4 rounded-pill shadow-sm" data-bs-toggle="modal" data-bs-target="#addProductModal">
             <i class="fas fa-plus me-1"></i> Add Product
         </button>
     </div>
+
+    <!-- You can display your products in cards here -->
+
 </div>
 
 <!-- Add Product Modal -->
 <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-
-            <div class="modal-header modal-header-modern">
-                <h5 class="modal-title" id="addProductModalLabel">Add New Product</h5>
+        <div class="modal-content border-0 shadow rounded-4">
+            <!-- Modal Header -->
+            <div class="modal-header bg-primary text-white rounded-top-4">
+                <h5 class="modal-title" id="addProductModalLabel">
+                    <i class="fas fa-box-open me-2"></i> Add New Product
+                </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
 
+            <!-- Modal Body -->
             <div class="modal-body px-4 py-4">
-                <form>
+                <form method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="row g-4">
 
                         <div class="col-md-6">
-                            <label class="form-label">Product Name</label>
-                            <input type="text" class="form-control" placeholder="Example: Shopee Sneakers">
+                            <label class="form-label fw-semibold">Product Name</label>
+                            <input type="text" name="name" class="form-control border-0 shadow-sm" placeholder="e.g. Shopee Sneakers" required>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Price</label>
-                            <input type="number" class="form-control" placeholder="₱1999">
+                            <label class="form-label fw-semibold">Price</label>
+                            <input type="number" name="price" class="form-control border-0 shadow-sm" placeholder="₱1999" required>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Category</label>
-                            <select class="form-select">
+                            <label class="form-label fw-semibold">Category</label>
+                            <select name="category" class="form-select border-0 shadow-sm" required>
                                 <option disabled selected>Select category</option>
                                 <option>Shoes</option>
                                 <option>Electronics</option>
@@ -47,30 +55,30 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label">Stock</label>
-                            <input type="number" class="form-control" placeholder="e.g. 100">
+                            <label class="form-label fw-semibold">Stock</label>
+                            <input type="number" name="stock" class="form-control border-0 shadow-sm" placeholder="e.g. 100" required>
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" rows="3" placeholder="Write product description..."></textarea>
+                            <label class="form-label fw-semibold">Description</label>
+                            <textarea name="description" class="form-control border-0 shadow-sm" rows="3" placeholder="Write product description..."></textarea>
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label">Product Image</label>
-                            <input type="file" class="form-control">
+                            <label class="form-label fw-semibold">Product Image</label>
+                            <input type="file" name="image" class="form-control border-0 shadow-sm" required>
                         </div>
 
                     </div>
                 </form>
             </div>
 
+            <!-- Modal Footer -->
             <div class="modal-footer px-4 pb-4">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-modern rounded-pill px-4">Save Product</button>
+                <button type="button" class="btn btn-light rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary rounded-pill px-4">Save Product</button>
             </div>
         </div>
     </div>
 </div>
-
 @endsection
