@@ -11,32 +11,32 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('adminproduct') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect  border-primary">
+            <a href="{{ route('product') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect  border-primary">
                 <i class="fas fa-box-open me-2 text-primary"></i> Products
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admincategories') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
+            <a href="{{ route('categories') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
                 <i class="fas fa-list me-2 text-primary"></i> Categories
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('adminorder') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
+            <a href="{{ route('order') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
                 <i class="fas fa-shopping-cart me-2 text-primary"></i> Orders
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admincustomer') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
+            <a href="{{ route('customer') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
                 <i class="fas fa-users me-2 text-primary"></i> Customers
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('adminreview') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
+            <a href="{{ route('review') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
                 <i class="fas fa-star me-2 text-primary"></i> Reviews
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('adminsetting') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
+            <a href="{{ route('settings') }}" class="nav-link text-dark px-3 py-2 rounded hover-effect">
                 <i class="fas fa-cogs me-2 text-primary"></i> Settings
             </a>
         </li>

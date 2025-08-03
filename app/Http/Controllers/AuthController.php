@@ -135,31 +135,31 @@ class AuthController extends Controller
         return view ('admin.adminmain');
     }
 
-    public function adminproduct(){
+    public function product(){
         return view ('admin.adminproduct');
     }
 
-    public function admincategories()
+    public function categories()
     {
         return view('admin.admincategories');
     }
 
-    public function adminorder()
+    public function order()
     {
         return view('admin.adminorder');
     }
 
-    public function admincustomer()
+    public function customer()
     {
         return view('admin.admincustomer');
     }
 
-    public function adminreview()
+    public function review()
     {
         return view('admin.adminreview');
     }
 
-    public function adminsetting()
+    public function settings()
     {
         return view('admin.adminsetting');
     }
