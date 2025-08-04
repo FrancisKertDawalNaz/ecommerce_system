@@ -30,7 +30,7 @@
 
             <!-- Modal Body -->
             <div class="modal-body px-4 py-4">
-                <form method="POST" enctype="multipart/form-data" action="#{ route('admin.product.store') }}">
+                <form method="POST" enctype="multipart/form-data" action="{{ route('admin.product.store') }}">
                     @csrf
                     <div class="row g-4">
 
@@ -68,15 +68,13 @@
                             <label class="form-label fw-semibold">Product Image</label>
                             <input type="file" name="image" class="form-control border-0 shadow-sm" required>
                         </div>
-
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer px-4 pb-4">
+                        <button type="button" class="btn btn-light rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary rounded-pill px-4">Save Product</button>
                     </div>
                 </form>
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="modal-footer px-4 pb-4">
-                <button type="button" class="btn btn-light rounded-pill" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary rounded-pill px-4">Save Product</button>
             </div>
         </div>
     </div>

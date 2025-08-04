@@ -178,4 +178,33 @@ class AuthController extends Controller
         return redirect()->route('Mainadmin')->with('success', 'You have been logged out.');
     }
 
+    public function productstore(Request $request)
+    {
+        // Validate input
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'description' => 'required',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'stock' => 'required|integer|min:0',
+        ]);
+
+        // Handle file upload
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+        }
+
+        // Save to database
+        Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'image_url' => $imageName,
+            'stock' => $request->stock,
+        ]);
+
+        return redirect()->route('product')->with('success', 'Product added successfully!');
+    }   
+
 }
