@@ -27,10 +27,12 @@
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-
+            @if (session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
             <!-- Modal Body -->
             <div class="modal-body px-4 py-4">
-                <form method="POST" enctype="multipart/form-data" action="{{ route('admin.product.store') }}">
+                <form method="POST" action="{{ route('admin.product.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row g-4">
 
@@ -42,16 +44,6 @@
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">Price</label>
                             <input type="number" name="price" class="form-control border-0 shadow-sm" placeholder="₱1999" required>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label fw-semibold">Category</label>
-                            <select name="category" class="form-select border-0 shadow-sm" required>
-                                <option disabled selected>Select category</option>
-                                <option>Shoes</option>
-                                <option>Electronics</option>
-                                <option>Clothing</option>
-                            </select>
                         </div>
 
                         <div class="col-md-6">

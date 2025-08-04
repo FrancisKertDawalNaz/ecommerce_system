@@ -7,6 +7,7 @@ use App\Models\Register;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -102,7 +103,8 @@ class AuthController extends Controller
         return view('user.shop');
     }
 
-    public function orders(){
+    public function orders()
+    {
         return view('user.orders');
     }
 
@@ -111,7 +113,8 @@ class AuthController extends Controller
         return view('user.wishlist');
     }
 
-    public function setting(){
+    public function setting()
+    {
         return view('user.setting');
     }
 
@@ -128,16 +131,19 @@ class AuthController extends Controller
         return redirect()->route('login')->with('success', 'You have been logged out.');
     }
 
-    public function Mainadmin(){
-        return view ('admin.auth.admin_login');
+    public function Mainadmin()
+    {
+        return view('admin.auth.admin_login');
     }
 
-    public function admindashboard(){
-        return view ('admin.adminmain');
+    public function admindashboard()
+    {
+        return view('admin.adminmain');
     }
 
-    public function product(){
-        return view ('admin.adminproduct');
+    public function product()
+    {
+        return view('admin.adminproduct');
     }
 
     public function categories()
@@ -178,33 +184,29 @@ class AuthController extends Controller
         return redirect()->route('Mainadmin')->with('success', 'You have been logged out.');
     }
 
-    public function productstore(Request $request)
+    public function storeProduct(Request $request)
     {
-        // Validate input
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string',
             'price' => 'required|numeric',
-            'description' => 'required',
-            'image_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'stock' => 'required|integer|min:0',
+            'stock' => 'required|integer',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|max:2048',
         ]);
 
-        // Handle file upload
+        $imagePath = null;
         if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
+            $imagePath = $request->file('image')->store('images', 'public');
         }
 
-        // Save to database
         Product::create([
             'name' => $request->name,
             'price' => $request->price,
-            'description' => $request->description,
-            'image_url' => $imageName,
             'stock' => $request->stock,
+            'description' => $request->description,
+            'image_url' => $imagePath,
         ]);
 
-        return redirect()->route('product')->with('success', 'Product added successfully!');
-    }   
-
+        return redirect()->back()->with('success', 'Product added successfully!');
+    }
 }
