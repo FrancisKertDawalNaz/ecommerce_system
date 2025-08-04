@@ -30,7 +30,7 @@
 
             <!-- Modal Body -->
             <div class="modal-body px-4 py-4">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" action="#{ route('admin.product.store') }}">
                     @csrf
                     <div class="row g-4">
 
