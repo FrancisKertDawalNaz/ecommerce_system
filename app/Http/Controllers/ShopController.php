@@ -8,15 +8,9 @@ use App\Models\Product;
 
 class ShopController extends Controller
 {
-    public function index()
-    {
-        $products = Product::all(); // You can also use paginate(6) if needed
-        return view('user.shop', compact('products'));
-    }
-
     public function showProducts()
     {
-        $products = Product::all();
-        return view('admin.product', compact('products'));
+        $products = Product::all(); // Fetch all products
+        return view('admin.product', compact('products')); // Pass to Blade
     }
 }
