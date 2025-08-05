@@ -8,7 +8,7 @@
         @forelse ($products as $product)
         <div class="col-md-4">
             <div class="card border rounded-3 h-100" style="border-color: #e5e5e5;">
-                <img src="{{ asset('images/products/one.jpg') }}" alt="{{ $product->name }}"
+                <img src="{{ asset('storage/' . $product->image_url) }}" alt="Product Image"
                     class="card-img-top" style="height: 220px; object-fit: cover; border-radius: 0.5rem 0.5rem 0 0;">
 
                 <div class="card-body">

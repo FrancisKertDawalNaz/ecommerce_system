@@ -15,6 +15,6 @@ class ShopController extends Controller
     public function showProducts()
     {
         $products = Product::all();
-        return view('admin.product', compact('products')); // ✅ correct here
+        return view('admin.adminproduct', compact('products')); // ✅ correct here
     }
 }

@@ -27,3 +27,8 @@ html, body {
     font-size: 1rem;
     font-weight: 600;
 }
+
+.content-scrollable {
+    height: calc(100vh - 70px); /* Adjust based on height of your navbar/header */
+    overflow-y: auto;
+}

@@ -1,7 +1,7 @@
 @extends('admin.layout.admin_app')
 
 @section('content')
-<div class="container mt-4">
+<div class="content-scrollable px-4 py--5">
     <!-- Page Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold text-primary mb-0">
@@ -11,43 +11,33 @@
             <i class="fas fa-plus me-1"></i> Add Product
         </button>
     </div>
-
-    @if(isset($products) && $products->isNotEmpty())
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead class="table-primary">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>₱ Price</th>
-                    <th>Stock</th>
-                    <th>Image</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($products as $product)
-                <tr>
-                    <td>{{ $product->id }}</td>
-                    <td>{{ $product->name }}</td>
-                    <td>₱{{ number_format($product->price, 2) }}</td>
-                    <td>{{ $product->stock }}</td>
-                    <td>
-                        @if ($product->image_url)
-                        <img src="{{ asset('storage/' . $product->image_url) }}" alt="Product Image" width="80">
-                        @else
-                        <span class="text-muted">No image</span>
-                        @endif
-                    </td>
-                    <td>{{ $product->description }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-    @else
-    <p class="text-muted">No products found.</p>
+    @if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
     @endif
+
+    <div class="row g-4">
+        @forelse ($products as $product)
+        <div class="col-md-4">
+            <div class="card border rounded-3 h-100" style="border-color: #e5e5e5;">
+                <img src="{{ asset('storage/' . $product->image_url) }}" alt="Product Image"
+                    class="card-img-top" style="height: 220px; object-fit: cover; border-radius: 0.5rem 0.5rem 0 0;">
+
+                <div class="card-body">
+                    <h5 class="card-title fw-semibold mb-2" style="font-size: 1.1rem;">{{ $product->name }}</h5>
+                    <p class="card-text text-muted small mb-3">{{ Str::limit($product->description, 80) }}</p>
+                    <p class="fw-bold text-primary mb-3">₱{{ number_format($product->price, 2) }}</p>
+
+                    <!-- Add to Cart Button -->
+                    <a href="#modal-{{ $product->id }}" class="btn btn-sm btn-outline-primary w-100 rounded-pill">
+                        <i class="fas fa-cart-plus me-1"></i> Add to Cart
+                    </a>
+                </div>
+            </div>
+        </div>
+        @empty
+        <p>No products available.</p>
+        @endforelse
+    </div>
 </div>
 
 <!-- Add Product Modal -->
@@ -109,3 +99,10 @@
     </div>
 </div>
 @endsection
+<script>
+    setTimeout(() => {
+        document.querySelectorAll('.alert').forEach(alert => {
+            alert.style.display = 'none';
+        });
+    }, 6000);
+</script>

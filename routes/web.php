@@ -25,9 +25,11 @@ Route::get('/Mainadmin',[AuthController::class,'Mainadmin'])->name('Mainadmin');
 Route::post('/Mainadmin', [AuthController::class, 'adminRegister'])->name('adminlogin.process');
 Route::post('/adminlogout', [AuthController::class, 'adminlogout'])->name('adminlogout');
 Route::get('/admin/dashboard', [AuthController::class, 'admindashboard'])->name('admindashboard');
+
 Route::get('/admin/product', [AuthController::class, 'product'])->name('product');
 Route::post('/admin/product', [AuthController::class, 'storeProduct'])->name('admin.product.store');
-Route::get('/admin/products', [ShopController::class, 'showProducts'])->name('admin.product');
+Route::get('/admin/product', [ShopController::class, 'showProducts'])->name('product');
+
 Route::get('/admin/categories', [AuthController::class, 'categories'])->name('categories');
 Route::get('/admin/order', [AuthController::class, 'order'])->name('order');
 Route::get('/admin/customer', [AuthController::class, 'customer'])->name('customer');
