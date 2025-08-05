@@ -74,8 +74,8 @@
                     <span class="fw-medium text-dark">{{ session('loggedUser')->name ?? 'Admin' }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm">
-                    <li><a class="dropdown-item" href="#">👤 Profile</a></li>
-                    <li><a class="dropdown-item" href="#">⚙️ Settings</a></li>
+                    <li><a class="dropdown-item" href="{{ route('settings') }}">👤 Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('settings') }}">⚙️ Settings</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
