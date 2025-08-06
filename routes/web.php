@@ -40,4 +40,6 @@ Route::get('/products/{id}/edit', [ShopController::class, 'edit'])->name('admin.
     Route::put('/products/{id}', [ShopController::class, 'update'])->name('admin.product.update');
     Route::delete('/products/{id}', [ShopController::class, 'destroy'])->name('admin.product.destroy');
 
+Route::post('/wishlist/{product}', [AuthController::class, 'add'])->name('wishlist.add');
+
 
