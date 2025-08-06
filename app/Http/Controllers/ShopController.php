@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Wishlist;
 
@@ -56,12 +57,12 @@ class ShopController extends Controller
     // add to wishlist
     public function addToWishlist($productId)
     {
-        $sessionUser = session('loggedUser');
+        $sessionUser = Auth::user();
         if (!$sessionUser) {
             return redirect()->route('login')->with('error', 'Please login first.');
         }
 
-        $existing = Wishlist::where('user_id', $sessionUser['id'])
+        $existing = Wishlist::where('user_id', $sessionUser->id)
             ->where('product_id', $productId)
             ->first();
 
@@ -77,14 +78,14 @@ class ShopController extends Controller
     // show wishlist
     public function showWishlist()
     {
-        $sessionUser = session('loggedUser');
+        $sessionUser = Auth::user();
 
         if (!$sessionUser) {
             return redirect()->route('login')->with('error', 'Please login first.');
         }
 
         $wishlistItems = Wishlist::with('product')
-            ->where('user_id', $sessionUser['id'])
+            ->where('user_id', $sessionUser->id)
             ->get();
 
         return view('user.wishlist', compact('wishlistItems'));

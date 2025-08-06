@@ -30,7 +30,7 @@
             <div class="alert alert-success">{{ session('success') }}</div>
             @endif
 
-            <form method="POST" action="{{ route('adminlogin.process') }}">
+            <form method="POST" action="{{ route('login.process') }}">
                 @csrf
 
                 <div class="form-floating mb-3">

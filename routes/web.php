@@ -20,25 +20,29 @@ Route::get('/user/wishlist', [AuthController::class, 'wishlist'])->name('wishlis
 Route::get('/user/setting', [AuthController::class, 'setting'])->name('setting');
 Route::get('/user/products', [ProductApiController::class, 'index']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-//admin
-Route::get('/Mainadmin',[AuthController::class,'Mainadmin'])->name('Mainadmin');
-Route::post('/Mainadmin', [AuthController::class, 'adminRegister'])->name('adminlogin.process');
-Route::post('/adminlogout', [AuthController::class, 'adminlogout'])->name('adminlogout');
-Route::get('/admin/dashboard', [AuthController::class, 'admindashboard'])->name('admindashboard');
 
-Route::get('/admin/product', [AuthController::class, 'product'])->name('product');
-Route::post('/admin/product', [AuthController::class, 'storeProduct'])->name('admin.product.store');
-Route::get('/admin/product', [ShopController::class, 'showProducts'])->name('product');
+Route::get('/admin/login', [AuthController::class, 'Mainadmin'])->name('admin.login');
 
-Route::get('/admin/categories', [AuthController::class, 'categories'])->name('categories');
-Route::get('/admin/order', [AuthController::class, 'order'])->name('order');
-Route::get('/admin/customer', [AuthController::class, 'customer'])->name('customer');
-Route::get('/admin/review', [AuthController::class, 'review'])->name('review');
-Route::get('/admin/settings', [AuthController::class, 'settings'])->name('settings');
+//admin routes with role middleware
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', [AuthController::class, 'admindashboard'])->name('admindashboard');
+    Route::get('/admin/product', [AuthController::class, 'product'])->name('product');
+    Route::post('/admin/product', [AuthController::class, 'storeProduct'])->name('admin.product.store');
+    Route::get('/admin/product', [ShopController::class, 'showProducts'])->name('product');
+    Route::get('/admin/categories', [AuthController::class, 'categories'])->name('categories');
+    Route::get('/admin/order', [AuthController::class, 'order'])->name('order');
+    Route::get('/admin/customer', [AuthController::class, 'customer'])->name('customer');
+    Route::get('/admin/review', [AuthController::class, 'review'])->name('review');
+    Route::get('/admin/settings', [AuthController::class, 'settings'])->name('settings');
 
-Route::get('/products/{id}/edit', [ShopController::class, 'edit'])->name('admin.product.edit');
+    Route::get('/products/{id}/edit', [ShopController::class, 'edit'])->name('admin.product.edit');
     Route::put('/products/{id}', [ShopController::class, 'update'])->name('admin.product.update');
     Route::delete('/products/{id}', [ShopController::class, 'destroy'])->name('admin.product.destroy');
+
+
+    Route::post('/adminlogout', [AuthController::class, 'logout'])->name('adminlogout');
+});
+
 
 Route::post('/wishlist/{product}', [AuthController::class, 'add'])->name('wishlist.add');
 Route::post('/wishlist/add/{id}', [ShopController::class, 'addToWishlist'])->name('wishlist.add');
