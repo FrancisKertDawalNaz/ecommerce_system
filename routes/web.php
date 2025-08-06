@@ -46,6 +46,6 @@ Route::post('/wishlist/add/{id}', [ShopController::class, 'addToWishlist'])->nam
 Route::delete('/wishlist/remove/{id}', [ShopController::class, 'removeFromWishlist'])->name('wishlist.remove');
 Route::get('/user/wishlist', [ShopController::class, 'showWishlist'])->name('wishlist');
 
-Route::get('/admin/dashboard', [DashboardController::class, 'admindashboard'])->name('admindashboard');
+Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('admindashboard');
 
 
