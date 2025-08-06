@@ -18,7 +18,7 @@
                 <div class="row g-4">
                     <!-- Profile Picture -->
                     <div class="col-md-3 text-center">
-                        <img src="https://via.placeholder.com/100" class="rounded-circle mb-2 shadow-sm" width="100" height="100" alt="Profile">
+                        <img src="{{ asset('images/admincat.jpg') }}" class="rounded-circle mb-2 shadow-sm" width="100" height="100" alt="Profile">
                         <div class="mb-2">
                             <label class="form-label fw-semibold">Change Profile</label>
                             <input type="file" class="form-control form-control-sm border-0 shadow-sm" name="profile_image">
@@ -27,10 +27,6 @@
 
                     <!-- Personal Info -->
                     <div class="col-md-9">
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Full Name</label>
-                            <input type="text" class="form-control border-0 shadow-sm" name="name" value="Admin Name">
-                        </div>
                         <div class="mb-3">
                             <label class="form-label fw-semibold">Email Address</label>
                             <input type="email" class="form-control border-0 shadow-sm" name="email" value="admin@example.com">
