@@ -16,11 +16,12 @@
                     </div>
                     <div>
                         <h6 class="mb-0">Products</h6>
-                        <h4 class="fw-bold mb-0">120</h4>
+                        <h4 class="fw-bold mb-0">{{ $productCount }}</h4>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-md-3 col-sm-6">
             <div class="card border-primary shadow-sm rounded-4 p-3">
                 <div class="d-flex align-items-center">
@@ -150,7 +151,9 @@
         options: {
             responsive: true,
             scales: {
-                y: { beginAtZero: true }
+                y: {
+                    beginAtZero: true
+                }
             }
         }
     });
@@ -170,7 +173,9 @@
             responsive: true,
             cutout: '70%',
             plugins: {
-                legend: { position: 'bottom' }
+                legend: {
+                    position: 'bottom'
+                }
             }
         }
     });

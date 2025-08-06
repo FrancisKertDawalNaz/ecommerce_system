@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('loading');
@@ -45,5 +46,6 @@ Route::post('/wishlist/add/{id}', [ShopController::class, 'addToWishlist'])->nam
 Route::delete('/wishlist/remove/{id}', [ShopController::class, 'removeFromWishlist'])->name('wishlist.remove');
 Route::get('/user/wishlist', [ShopController::class, 'showWishlist'])->name('wishlist');
 
+Route::get('/admin/dashboard', [DashboardController::class, 'admindashboard'])->name('admindashboard');
 
 
