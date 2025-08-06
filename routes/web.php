@@ -36,3 +36,8 @@ Route::get('/admin/customer', [AuthController::class, 'customer'])->name('custom
 Route::get('/admin/review', [AuthController::class, 'review'])->name('review');
 Route::get('/admin/settings', [AuthController::class, 'settings'])->name('settings');
 
+Route::get('/products/{id}/edit', [ShopController::class, 'edit'])->name('admin.product.edit');
+    Route::put('/products/{id}', [ShopController::class, 'update'])->name('admin.product.update');
+    Route::delete('/products/{id}', [ShopController::class, 'destroy'])->name('admin.product.destroy');
+
+
