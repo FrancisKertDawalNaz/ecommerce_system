@@ -41,5 +41,9 @@ Route::get('/products/{id}/edit', [ShopController::class, 'edit'])->name('admin.
     Route::delete('/products/{id}', [ShopController::class, 'destroy'])->name('admin.product.destroy');
 
 Route::post('/wishlist/{product}', [AuthController::class, 'add'])->name('wishlist.add');
+Route::post('/wishlist/add/{id}', [ShopController::class, 'addToWishlist'])->name('wishlist.add');
+Route::delete('/wishlist/remove/{id}', [ShopController::class, 'removeFromWishlist'])->name('wishlist.remove');
+Route::get('/user/wishlist', [ShopController::class, 'showWishlist'])->name('wishlist');
+
 
 
