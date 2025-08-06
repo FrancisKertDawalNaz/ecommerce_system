@@ -1,6 +1,7 @@
-html, body {
+html,
+body {
     height: 100%;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .content-scrollable {
@@ -23,12 +24,23 @@ html, body {
     border-radius: 1rem;
     font-size: 0.9rem;
 }
+
 .dropdown-header {
     font-size: 1rem;
     font-weight: 600;
 }
 
 .content-scrollable {
-    height: calc(100vh - 70px); /* Adjust based on height of your navbar/header */
+    height: calc(100vh - 70px);
+    /* Adjust based on height of your navbar/header */
     overflow-y: auto;
+}
+
+.btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

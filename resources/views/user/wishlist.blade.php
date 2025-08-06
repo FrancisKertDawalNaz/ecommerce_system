@@ -3,13 +3,15 @@
 @section('content')
 <div class="content-scrollable px-4 py--5" style="font-family: 'Poppins', sans-serif;">
     <h2 class="fw-bold mb-4 text-primary">❤️ My Wishlist</h2>
-
+     @if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
     <div class="row g-4">
         @forelse ($wishlistItems as $item)
         <div class="col-md-4 col-sm-6">
             <div class="card h-100 border-0 shadow-sm rounded-4">
-                <img src="{{ asset('storage/' . $item->product->image_url) }}" 
-                    alt="{{ $item->product->name }}" 
+                <img src="{{ asset('storage/' . $item->product->image_url) }}"
+                    alt="{{ $item->product->name }}"
                     class="card-img-top rounded-top-4"
                     style="height: 220px; object-fit: cover;">
 
@@ -20,15 +22,18 @@
                     <p class="text-muted small mb-2">₱{{ number_format($item->product->price, 2) }}</p>
 
                     <div class="mt-auto d-flex justify-content-between gap-2">
+                        <!-- Remove Button -->
                         <form action="{{ route('wishlist.remove', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-outline-danger w-100 rounded-pill">
-                                <i class="fas fa-trash-alt me-1"></i> Remove
+                            <button class="btn btn-light border border-danger-subtle text-danger fw-semibold px-3 py-2 rounded-pill d-flex align-items-center gap-1 shadow-sm transition-all" style="font-size: 0.9rem;">
+                                <i class="fas fa-trash-alt"></i> Remove
                             </button>
                         </form>
-                        <a href="#modal-{{ $item->product->id }}" class="btn btn-sm btn-primary w-100 rounded-pill">
-                            <i class="fas fa-cart-plus me-1"></i> Add to Cart
+
+                        <!-- Add to Cart Button -->
+                        <a href="#modal-{{ $item->product->id }}" class="btn text-white fw-semibold px-3 py-2 rounded-pill d-flex align-items-center gap-1 shadow-sm transition-all" style="font-size: 0.9rem; background-color: #0d6efd;">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
                         </a>
                     </div>
                 </div>

@@ -31,6 +31,13 @@
         </div>
     </div>
     @stack('scripts')
+    <script>
+        setTimeout(() => {
+            document.querySelectorAll('.alert').forEach(alert => {
+                alert.style.display = 'none';
+            });
+        }, 6000);
+    </script>
 </body>
 
 </html>
