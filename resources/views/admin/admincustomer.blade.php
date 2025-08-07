@@ -28,7 +28,6 @@
                         <tr class="border-bottom">
                             <td class="px-4 py-3">
                                 <div class="d-flex align-items-center">
-                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-3" alt="Avatar">
                                     <span class="fw-semibold">Juan Dela Cruz</span>
                                 </div>
                             </td>
