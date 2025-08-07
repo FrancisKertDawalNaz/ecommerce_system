@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\admin_register;
-use App\Models\Register;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
@@ -23,46 +23,28 @@ class AuthController extends Controller
 
     public function processRegister(Request $request)
     {
-        // Validate input
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+        // Validate input with stronger rules
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email|max:255',
+            'password' => 'required|min:8',
         ]);
 
-        // Save to database
-        \App\Models\Register::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => \Illuminate\Support\Facades\Hash::make($request->password),
-        ]);
-
-        return redirect()->route('login')->with('success', 'Account created! You may now log in.');
-    }
-
-    public function adminRegister(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        $user = admin_register::where('email', $request->email)->first();
-
-        if ($user && Hash::check($request->password, $user->password)) {
-            // Optionally store user info in session
-            session([
-                'loggedUser' => [
-                    'id' => $user->id,
-                    'email' => $user->email,
-                ]
+        try {
+            // Create new user
+            $user = User::create([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'password' => Hash::make($validatedData['password']),
             ]);
 
+            Auth::login($user);
 
-            // Redirect to admin dashboard
-            return redirect()->route('admindashboard')->with('success', 'Login successful!');
-        } else {
-            return redirect()->route('Mainadmin')->with('error', 'Invalid email or password.');
+            return redirect()->route('dashboard')->with('success', 'Registration successful! Welcome to our platform.');
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->withInput($request->except('password'))
+                ->with('error', 'Registration failed. Please try again.');
         }
     }
 
@@ -73,24 +55,17 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $user = Register::where('email', $request->email)->first();
-
-        if ($user && Hash::check($request->password, $user->password)) {
-            // Optionally store user info in session
-            session([
-                'loggedUser' => [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email,
-                ]
-            ]);
-
-
-            // Redirect to user dashboard
-            return redirect()->route('dashboard')->with('success', 'Login successful!');
-        } else {
+        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('login')->with('error', 'Invalid email or password.');
         }
+
+        $role = Auth::user()->role;
+
+        if ($role === 'admin') {
+            return redirect()->route('admindashboard')->with('success', 'Login successful!');
+        }
+
+        return redirect()->route('dashboard')->with('success', 'Login successful!');
     }
 
     public function dashboard()
@@ -120,8 +95,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        // Manually forget the custom session
-        $request->session()->forget('loggedUser');
+        Auth::logout();
 
         // Invalidate the session
         $request->session()->invalidate();
@@ -164,19 +138,6 @@ class AuthController extends Controller
     public function settings()
     {
         return view('admin.adminsetting');
-    }
-
-    public function adminlogout(Request $request)
-    {
-        // Manually forget the custom session
-        $request->session()->forget('loggedUser');
-
-        // Invalidate the session
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        // Redirect to admin login
-        return redirect()->route('Mainadmin')->with('success', 'You have been logged out.');
     }
 
     public function storeProduct(Request $request)

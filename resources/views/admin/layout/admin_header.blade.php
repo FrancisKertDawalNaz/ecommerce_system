@@ -71,7 +71,7 @@
             {{-- User Dropdown --}}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="fw-medium text-dark">{{ session('loggedUser')->name ?? 'Admin' }}</span>
+                    <span class="fw-medium text-dark">{{ auth()->user()->name ?? 'Admin' }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                     <li><a class="dropdown-item" href="{{ route('settings') }}">👤 Profile</a></li>
