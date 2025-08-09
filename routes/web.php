@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('loading');
@@ -22,20 +23,20 @@ Route::get('/user/setting', [AuthController::class, 'setting'])->name('setting')
 Route::get('/user/products', [ProductApiController::class, 'index']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //admin
-Route::get('/Mainadmin',[AuthController::class,'Mainadmin'])->name('Mainadmin');
-Route::post('/Mainadmin', [AuthController::class, 'adminRegister'])->name('adminlogin.process');
-Route::post('/adminlogout', [AuthController::class, 'adminlogout'])->name('adminlogout');
-Route::get('/admin/dashboard', [AuthController::class, 'admindashboard'])->name('admindashboard');
+Route::get('/Mainadmin',[AdminController::class,'Mainadmin'])->name('Mainadmin');
+Route::post('/Mainadmin', [AdminController::class, 'adminRegister'])->name('adminlogin.process');
+Route::post('/adminlogout', [AdminController::class, 'adminlogout'])->name('adminlogout');
+Route::get('/admin/dashboard', [AdminController::class, 'admindashboard'])->name('admindashboard');
 
-Route::get('/admin/product', [AuthController::class, 'product'])->name('product');
+Route::get('/admin/product', [AdminController::class, 'product'])->name('product');
 Route::post('/admin/product', [AuthController::class, 'storeProduct'])->name('admin.product.store');
 Route::get('/admin/product', [ShopController::class, 'showProducts'])->name('product');
 
 Route::get('/admin/categories', [AuthController::class, 'categories'])->name('categories');
-Route::get('/admin/order', [AuthController::class, 'order'])->name('order');
-Route::get('/admin/customer', [AuthController::class, 'customer'])->name('customer');
-Route::get('/admin/review', [AuthController::class, 'review'])->name('review');
-Route::get('/admin/settings', [AuthController::class, 'settings'])->name('settings');
+Route::get('/admin/order', [AdminController::class, 'order'])->name('order');
+Route::get('/admin/customer', [AdminController::class, 'customer'])->name('customer');
+Route::get('/admin/review', [AdminController::class, 'review'])->name('review');
+Route::get('/admin/settings', [AdminController::class, 'settings'])->name('settings');
 
 Route::get('/products/{id}/edit', [ShopController::class, 'edit'])->name('admin.product.edit');
     Route::put('/products/{id}', [ShopController::class, 'update'])->name('admin.product.update');
