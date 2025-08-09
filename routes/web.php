@@ -49,4 +49,3 @@ Route::get('/user/wishlist', [ShopController::class, 'showWishlist'])->name('wis
 
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('admindashboard');
 
-

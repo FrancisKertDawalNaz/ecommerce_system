@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\admin_register;
 use Illuminate\Http\Request;
+use App\Models\Register;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -55,8 +56,10 @@ class AdminController extends Controller
 
     public function customer()
     {
-        return view('admin.admincustomer');
+        $customers = Register::orderBy('created_at', 'desc')->get();
+        return view('admin.admincustomer', compact('customers'));
     }
+
 
     public function review()
     {
@@ -80,5 +83,4 @@ class AdminController extends Controller
         // Redirect to admin login
         return redirect()->route('Mainadmin')->with('success', 'You have been logged out.');
     }
-
 }

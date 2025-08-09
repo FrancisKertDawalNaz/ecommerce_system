@@ -1,7 +1,7 @@
 @extends('admin.layout.admin_app')
 
 @section('content')
-<div class="container mt-4">
+<div class="content-scrollable px-4 py--5">
     <!-- Page Header -->
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="fw-bold text-primary mb-0">
@@ -16,39 +16,40 @@
                 <table class="table align-middle mb-0">
                     <thead class="table-light">
                         <tr class="text-uppercase small text-muted">
-                            <th class="px-4 py-3">Customer</th>
-                            <th>Email</th>
+                            <th>Id</th>
+                            <th>Name</th>
                             <th>Joined</th>
-                            <th>Status</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Sample Row -->
+                        @forelse($customers as $customer)
                         <tr class="border-bottom">
                             <td class="px-4 py-3">
                                 <div class="d-flex align-items-center">
-                                    <span class="fw-semibold">Juan Dela Cruz</span>
+                                    <span class="fw-semibold">{{ $customer->id }}</span>
                                 </div>
                             </td>
-                            <td>juan@example.com</td>
-                            <td>July 25, 2025</td>
-                            <td>
-                                <span class="badge bg-success rounded-pill px-3 py-2">Active</span>
-                            </td>
+                            <td>{{ $customer->name }}</td>
+                            <td>{{ \Carbon\Carbon::parse($customer->created_at)->format('F d, Y') }}</td>
                             <td class="text-center">
                                 <div class="d-flex justify-content-center gap-2">
-                                    <button class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                    <a class="btn btn-sm btn-outline-primary rounded-pill px-3" href="#">
                                         <i class="fas fa-eye me-1"></i> View
-                                    </button>
+                                    </a>
                                     <button class="btn btn-sm btn-outline-danger rounded-pill px-3">
                                         <i class="fas fa-user-slash me-1"></i> Ban
                                     </button>
                                 </div>
                             </td>
                         </tr>
-                        <!-- More rows here -->
+                        @empty
+                        <tr>
+                            <td colspan="4" class="text-center py-4">No customers found.</td>
+                        </tr>
+                        @endforelse
                     </tbody>
+
                 </table>
             </div>
         </div>
