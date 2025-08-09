@@ -43,7 +43,7 @@
                     </div>
                     <div>
                         <h6 class="mb-0">Users</h6>
-                        <h4 class="fw-bold mb-0">89</h4>
+                        <h4 class="fw-bold mb-0">{{ $userCount }}</h4>
                     </div>
                 </div>
             </div>
