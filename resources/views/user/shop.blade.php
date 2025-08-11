@@ -3,7 +3,9 @@
 @section('content')
 <div class="content-scrollable px-4 py--5" style="font-family: 'Poppins', sans-serif;">
     <h2 class="fw-bold mb-4 text-primary">🛒 Shop</h2>
-
+    @if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
     <div class="row g-4">
         @forelse ($products as $product)
         <div class="col-md-4">

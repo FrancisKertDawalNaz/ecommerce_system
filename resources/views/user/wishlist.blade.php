@@ -3,7 +3,7 @@
 @section('content')
 <div class="content-scrollable px-4 py--5" style="font-family: 'Poppins', sans-serif;">
     <h2 class="fw-bold mb-4 text-primary">❤️ My Wishlist</h2>
-     @if (session('success'))
+    @if (session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
     @endif
     <div class="row g-4">
@@ -26,15 +26,19 @@
                         <form action="{{ route('wishlist.remove', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-light border border-danger-subtle text-danger fw-semibold px-3 py-2 rounded-pill d-flex align-items-center gap-1 shadow-sm transition-all" style="font-size: 0.9rem;">
+                            <button class="btn btn-light border border-danger-subtle text-danger fw-semibold px-3 py-2 rounded-pill d-flex align-items-center gap-1 shadow-sm" style="font-size: 0.9rem;">
                                 <i class="fas fa-trash-alt"></i> Remove
                             </button>
                         </form>
 
-                        <!-- Add to Cart Button -->
-                        <a href="#modal-{{ $item->product->id }}" class="btn text-white fw-semibold px-3 py-2 rounded-pill d-flex align-items-center gap-1 shadow-sm transition-all" style="font-size: 0.9rem; background-color: #0d6efd;">
-                            <i class="fas fa-cart-plus"></i> Add to Cart
-                        </a>
+                        <!-- Add to Cart Button (fixed) -->
+                        <form action="{{ route('cart.add', $item->product->id) }}" method="POST" class="w-50">
+                            @csrf
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn text-white fw-semibold px-3 py-2 rounded-pill d-flex align-items-center gap-1 shadow-sm" style="font-size: 0.9rem; background-color: #0d6efd;">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
