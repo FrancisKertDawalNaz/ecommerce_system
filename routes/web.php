@@ -58,3 +58,4 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('/live-search', [App\Http\Controllers\ProductController::class, 'liveSearch'])->name('products.liveSearch');
 
 Route::get('/search-suggestions', [ProductController::class, 'searchSuggestions']);
+Route::get('/search-suggestions', [ProductController::class, 'searchSuggestions'])->name('search.suggestions');

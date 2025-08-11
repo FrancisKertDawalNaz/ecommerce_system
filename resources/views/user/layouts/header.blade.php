@@ -121,35 +121,36 @@
 </nav>
 
 <script>
-document.getElementById('searchInput').addEventListener('input', function() {
-    let query = this.value;
-    let suggestionsList = document.getElementById('suggestionsList');
+document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById("searchInput");
+    const suggestionsList = document.getElementById("suggestionsList");
 
-    if (query.length > 1) {
-        fetch(`/search-suggestions?query=${encodeURIComponent(query)}`)
-            .then(response => response.json())
-            .then(data => {
-                suggestionsList.innerHTML = '';
-                suggestionsList.style.display = 'block';
+    searchInput.addEventListener("keyup", function() {
+        let query = searchInput.value.trim();
 
-                if (data.length > 0) {
-                    data.forEach(item => {
-                        let li = document.createElement('a');
-                        li.href = `/product/${item.id}`; // optional: punta sa product page
-                        li.classList.add('list-group-item', 'list-group-item-action');
-                        li.textContent = item.name;
-                        suggestionsList.appendChild(li);
-                    });
-                } else {
-                    let li = document.createElement('div');
-                    li.classList.add('list-group-item', 'text-muted');
-                    li.textContent = 'No results found';
-                    suggestionsList.appendChild(li);
-                }
-            });
-    } else {
-        suggestionsList.innerHTML = '';
-        suggestionsList.style.display = 'none';
-    }
+        if (query.length > 0) {
+            fetch(`/search-suggestions?query=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    suggestionsList.innerHTML = "";
+
+                    if (data.length > 0) {
+                        data.forEach(product => {
+                            const li = document.createElement("li");
+                            li.classList.add("list-group-item");
+                            li.innerHTML = product.name;
+                            li.addEventListener("click", () => {
+                                window.location.href = `/products/${product.id}`;
+                            });
+                            suggestionsList.appendChild(li);
+                        });
+                    } else {
+                        suggestionsList.innerHTML = `<li class="list-group-item">No results found</li>`;
+                    }
+                });
+        } else {
+            suggestionsList.innerHTML = "";
+        }
+    });
 });
 </script>
