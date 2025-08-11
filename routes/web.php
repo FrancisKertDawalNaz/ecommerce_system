@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('loading');
@@ -48,4 +49,7 @@ Route::delete('/wishlist/remove/{id}', [ShopController::class, 'removeFromWishli
 Route::get('/user/wishlist', [ShopController::class, 'showWishlist'])->name('wishlist');
 
 Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('admindashboard');
+
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 

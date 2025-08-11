@@ -17,12 +17,15 @@
                     <p class="fw-bold text-primary mb-3">₱{{ number_format($product->price, 2) }}</p>
 
                     <div class="d-flex gap-2">
-                        <!-- Add to Cart Button -->
-                        <a href="#modal-{{ $product->id }}"
-                            class="btn btn-sm w-50 text-white"
-                            style="background-color: #0d6efd; border-radius: 20px;">
-                            <i class="fas fa-cart-plus me-1"></i> Add to Cart
-                        </a>
+                        <form action="{{ route('cart.add', $product->id) }}" method="POST" class="w-50">
+                            @csrf
+                            <button type="submit"
+                                class="btn btn-sm w-100 text-white"
+                                style="background-color: #0d6efd; border-radius: 20px;">
+                                <i class="fas fa-cart-plus me-1"></i> Add to Cart
+                            </button>
+                        </form>
+
 
                         <!-- Wishlist Button -->
                         <form action="{{ route('wishlist.add', $product->id) }}" method="POST" class="w-50">

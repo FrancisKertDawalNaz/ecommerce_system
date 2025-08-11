@@ -23,26 +23,46 @@
         {{-- Right Icons --}}
         <ul class="navbar-nav ms-auto align-items-center">
             {{-- Cart Dropdown --}}
+            {{-- Cart Dropdown --}}
             <li class="nav-item dropdown me-3">
                 <a class="nav-link position-relative" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-shopping-cart fa-lg text-primary"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm p-3" aria-labelledby="cartDropdown" style="width: 300px;">
                     <h6 class="dropdown-header text-primary">🛒 Cart</h6>
+
+                    @php
+                    $cart = session('cart', []);
+                    @endphp
+
+                    @forelse ($cart as $item)
                     <li class="d-flex align-items-center mb-2">
-                        <img src="{{ asset('images/products/one.jpg') }}" class="rounded me-2" width="40" height="40">
+                        <img src="{{ asset('storage/' . $item['image']) }}" class="rounded me-2" width="40" height="40">
                         <div class="flex-grow-1">
-                            <div class="fw-semibold">Product A</div>
-                            <small class="text-muted">₱500.00 × 1</small>
+                            <div class="fw-semibold">{{ $item['name'] }}</div>
+                            <small class="text-muted">
+                                ₱{{ number_format($item['price'], 2) }} × {{ $item['quantity'] }}
+                            </small>
                         </div>
-                        <div class="text-end ms-2 fw-semibold">₱500.00</div>
+                        <div class="text-end ms-2 fw-semibold">
+                            ₱{{ number_format($item['price'] * $item['quantity'], 2) }}
+                        </div>
                     </li>
+                    @empty
+                    <li class="text-center text-muted small">Your cart is empty</li>
+                    @endforelse
+
+                    @if(count($cart) > 0)
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a href="#" class="btn btn-sm btn-primary w-100 rounded-pill">View Cart</a></li>
+                    <li>
+                        <a href="{{ route('cart.index') }}" class="btn btn-sm btn-primary w-100 rounded-pill">View Cart</a>
+                    </li>
+                    @endif
                 </ul>
             </li>
+
 
             {{-- Notification Dropdown --}}
             <li class="nav-item dropdown me-3">
