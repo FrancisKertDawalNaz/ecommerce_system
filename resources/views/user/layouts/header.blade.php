@@ -23,7 +23,6 @@
         {{-- Right Icons --}}
         <ul class="navbar-nav ms-auto align-items-center">
             {{-- Cart Dropdown --}}
-            {{-- Cart Dropdown --}}
             <li class="nav-item dropdown me-3">
                 <a class="nav-link position-relative" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-shopping-cart fa-lg text-primary"></i>
