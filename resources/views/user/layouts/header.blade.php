@@ -10,26 +10,6 @@
     </button>
 
     <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
-
-        {{-- Search Bar --}}
-        <form class="d-flex mx-auto w-50 position-relative" id="liveSearchForm">
-            <input id="searchInput"
-                class="form-control me-2 rounded-pill border-primary shadow-sm"
-                type="search"
-                placeholder="Search for products, brands..."
-                aria-label="Search">
-            <button class="btn btn-primary rounded-pill px-4" type="button">
-                <i class="fas fa-search"></i>
-            </button>
-
-            <!-- Search Suggestions -->
-            <div id="suggestionsList"
-                class="list-group position-absolute w-100 mt-2 shadow-sm"
-                style="z-index: 999; display:none;">
-            </div>
-        </form>
-
-
         {{-- Right Icons --}}
         <ul class="navbar-nav ms-auto align-items-center">
             {{-- Cart Dropdown --}}
@@ -119,38 +99,3 @@
         </ul>
     </div>
 </nav>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const searchInput = document.getElementById("searchInput");
-    const suggestionsList = document.getElementById("suggestionsList");
-
-    searchInput.addEventListener("keyup", function() {
-        let query = searchInput.value.trim();
-
-        if (query.length > 0) {
-            fetch(`/search-suggestions?query=${encodeURIComponent(query)}`)
-                .then(response => response.json())
-                .then(data => {
-                    suggestionsList.innerHTML = "";
-
-                    if (data.length > 0) {
-                        data.forEach(product => {
-                            const li = document.createElement("li");
-                            li.classList.add("list-group-item");
-                            li.innerHTML = product.name;
-                            li.addEventListener("click", () => {
-                                window.location.href = `/products/${product.id}`;
-                            });
-                            suggestionsList.appendChild(li);
-                        });
-                    } else {
-                        suggestionsList.innerHTML = `<li class="list-group-item">No results found</li>`;
-                    }
-                });
-        } else {
-            suggestionsList.innerHTML = "";
-        }
-    });
-});
-</script>

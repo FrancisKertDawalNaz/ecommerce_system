@@ -7,8 +7,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\ProductController;
+
 
 Route::get('/', function () {
     return view('loading');
@@ -57,5 +56,3 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
 Route::get('/live-search', [App\Http\Controllers\ProductController::class, 'liveSearch'])->name('products.liveSearch');
 
-Route::get('/search-suggestions', [ProductController::class, 'searchSuggestions']);
-Route::get('/search-suggestions', [ProductController::class, 'searchSuggestions'])->name('search.suggestions');
