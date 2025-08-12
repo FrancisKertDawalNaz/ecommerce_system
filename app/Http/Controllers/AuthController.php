@@ -50,8 +50,18 @@ class AuthController extends Controller
 
         $user = Register::where('email', $request->email)->first();
 
-        if ($user && Hash::check($request->password, $user->password)) {
-            // Optionally store user info in session
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'Invalid email or password.');
+        }
+
+        // Check kung banned
+        if ($user->status === 'banned') {
+            return redirect()->route('login')->with('error', 'Your account has been banned.');
+        }
+
+        // Check password
+        if (Hash::check($request->password, $user->password)) {
+            // Store user info in session
             session([
                 'loggedUser' => [
                     'id' => $user->id,
@@ -60,13 +70,12 @@ class AuthController extends Controller
                 ]
             ]);
 
-
-            // Redirect to user dashboard
             return redirect()->route('dashboard')->with('success', 'Login successful!');
-        } else {
-            return redirect()->route('login')->with('error', 'Invalid email or password.');
         }
+
+        return redirect()->route('login')->with('error', 'Invalid email or password.');
     }
+
 
     public function dashboard()
     {

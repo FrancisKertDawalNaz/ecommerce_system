@@ -7,6 +7,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CustomerController;
 
 
 Route::get('/', function () {
@@ -56,3 +57,5 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
 Route::get('/live-search', [App\Http\Controllers\ProductController::class, 'liveSearch'])->name('products.liveSearch');
 
+Route::post('/admin/customers/{id}/ban', [CustomerController::class, 'ban'])->name('customers.ban');
+Route::post('/admin/customers/{id}/unban', [CustomerController::class, 'unban'])->name('customers.unban');

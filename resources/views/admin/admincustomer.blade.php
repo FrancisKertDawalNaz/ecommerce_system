@@ -8,7 +8,9 @@
             <i class="fas fa-users me-2"></i> Customers
         </h2>
     </div>
-
+    @if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
     <!-- Customer Table -->
     <div class="card shadow-sm rounded-4 border-0">
         <div class="card-body p-0">
@@ -34,14 +36,27 @@
                             <td>{{ \Carbon\Carbon::parse($customer->created_at)->format('F d, Y') }}</td>
                             <td class="text-center">
                                 <div class="d-flex justify-content-center gap-2">
-                                    <a class="btn btn-sm btn-outline-primary rounded-pill px-3" href="#">
-                                        <i class="fas fa-eye me-1"></i> View
-                                    </a>
-                                    <button class="btn btn-sm btn-outline-danger rounded-pill px-3">
-                                        <i class="fas fa-user-slash me-1"></i> Ban
-                                    </button>
+                                    @if ($customer->status === 'banned')
+                                    {{-- Unban Button --}}
+                                    <form action="{{ route('customers.unban', $customer->id) }}" method="POST" onsubmit="return confirm('Unban this user?')">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-outline-success rounded-pill px-3">
+                                            <i class="fas fa-user-check me-1"></i> Unban
+                                        </button>
+                                    </form>
+                                    @else
+                                    {{-- Ban Button --}}
+                                    <form action="{{ route('customers.ban', $customer->id) }}" method="POST" onsubmit="return confirm('Ban this user?')">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill px-3">
+                                            <i class="fas fa-user-slash me-1"></i> Ban
+                                        </button>
+                                    </form>
+                                    @endif
                                 </div>
                             </td>
+
+
                         </tr>
                         @empty
                         <tr>

@@ -10,9 +10,11 @@ use Illuminate\Notifications\Notifiable;
 
 class Register extends Model
 {
-    use HasFactory;
+    use HasFactory,Notifiable;
 
     protected $table = 'register_tb';
 
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'status'];
+
+    protected $hidden = ['password'];
 }
