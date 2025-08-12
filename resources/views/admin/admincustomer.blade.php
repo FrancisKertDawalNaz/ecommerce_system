@@ -37,7 +37,6 @@
                             <td class="text-center">
                                 <div class="d-flex justify-content-center gap-2">
                                     @if ($customer->status === 'banned')
-                                    {{-- Unban Button --}}
                                     <form action="{{ route('customers.unban', $customer->id) }}" method="POST" onsubmit="return confirm('Unban this user?')">
                                         @csrf
                                         <button type="submit" class="btn btn-sm btn-outline-success rounded-pill px-3">
@@ -45,7 +44,6 @@
                                         </button>
                                     </form>
                                     @else
-                                    {{-- Ban Button --}}
                                     <form action="{{ route('customers.ban', $customer->id) }}" method="POST" onsubmit="return confirm('Ban this user?')">
                                         @csrf
                                         <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill px-3">
@@ -55,8 +53,6 @@
                                     @endif
                                 </div>
                             </td>
-
-
                         </tr>
                         @empty
                         <tr>
@@ -64,8 +60,12 @@
                         </tr>
                         @endforelse
                     </tbody>
-
                 </table>
+            </div>
+
+            {{-- Pagination --}}
+            <div class="p-3">
+                {{ $customers->links() }}
             </div>
         </div>
     </div>

@@ -56,9 +56,10 @@ class AdminController extends Controller
 
     public function customer()
     {
-        $customers = Register::orderBy('created_at', 'desc')->get();
+        $customers = Register::orderBy('created_at', 'desc')->paginate(5);
         return view('admin.admincustomer', compact('customers'));
     }
+
 
 
     public function review()
