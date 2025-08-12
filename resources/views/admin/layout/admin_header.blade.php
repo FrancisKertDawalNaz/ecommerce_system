@@ -10,40 +10,8 @@
     </button>
 
     <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
-
-        {{-- Search Bar --}}
-        <form class="d-flex mx-auto w-50">
-            <input class="form-control me-2 rounded-pill border-primary shadow-sm" type="search"
-                placeholder="Search for products, brands..." aria-label="Search">
-            <button class="btn btn-primary rounded-pill px-4" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
-
         {{-- Right Icons --}}
         <ul class="navbar-nav ms-auto align-items-center">
-            {{-- Cart Dropdown --}}
-            <li class="nav-item dropdown me-3">
-                <a class="nav-link position-relative" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-shopping-cart fa-lg text-primary"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end shadow-sm p-3" aria-labelledby="cartDropdown" style="width: 300px;">
-                    <h6 class="dropdown-header text-primary">🛒 Cart</h6>
-                    <li class="d-flex align-items-center mb-2">
-                        <img src="{{ asset('images/products/one.jpg') }}" class="rounded me-2" width="40" height="40">
-                        <div class="flex-grow-1">
-                            <div class="fw-semibold">Product A</div>
-                            <small class="text-muted">₱500.00 × 1</small>
-                        </div>
-                        <div class="text-end ms-2 fw-semibold">₱500.00</div>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a href="#" class="btn btn-sm btn-primary w-100 rounded-pill">View Cart</a></li>
-                </ul>
-            </li>
-
             {{-- Notification Dropdown --}}
             <li class="nav-item dropdown me-3">
                 <a class="nav-link position-relative" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
