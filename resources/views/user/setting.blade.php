@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <h5 class="card-title mb-3 fw-semibold">
                         <i class="fas fa-lock me-2 text-secondary"></i> Security
-                    </h5>                    <a href="#" class="btn btn-sm btn-outline-danger rounded-pill">
+                    </h5> <a href="#" class="btn btn-sm btn-outline-danger rounded-pill">
                         <i class="fas fa-key me-1"></i> Change Password
                     </a>
                 </div>
