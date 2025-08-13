@@ -14,8 +14,8 @@
                     <h5 class="card-title mb-3 fw-semibold">
                         <i class="fas fa-user-circle me-2 text-secondary"></i> Profile Information
                     </h5>
-                    <p><strong>Name:</strong> Juan Dela Cruz</p>
-                    <p><strong>Email:</strong> juan@email.com</p>
+                    <p><strong>Name: </strong>{{ session('loggedUser')['name'] ?? 'User' }}</p>
+                    <p><strong>Email: </strong>{{ session('loggedUser')['email'] ?? 'User' }}</p>
                     <a href="#" class="btn btn-sm btn-outline-primary rounded-pill">
                         <i class="fas fa-edit me-1"></i> Edit Profile
                     </a>
@@ -29,9 +29,7 @@
                 <div class="card-body">
                     <h5 class="card-title mb-3 fw-semibold">
                         <i class="fas fa-lock me-2 text-secondary"></i> Security
-                    </h5>
-                    <p><strong>Password:</strong> ••••••••</p>
-                    <a href="#" class="btn btn-sm btn-outline-danger rounded-pill">
+                    </h5>                    <a href="#" class="btn btn-sm btn-outline-danger rounded-pill">
                         <i class="fas fa-key me-1"></i> Change Password
                     </a>
                 </div>
