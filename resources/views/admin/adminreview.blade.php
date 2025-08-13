@@ -16,7 +16,6 @@
             <div class="card border-0 shadow-sm rounded-4 h-100">
                 <div class="card-body">
                     <div class="d-flex align-items-center mb-3">
-                        <img src="https://via.placeholder.com/40" alt="Avatar" class="rounded-circle me-3" width="40" height="40">
                         <div>
                             <h6 class="mb-0 fw-semibold">Juan Dela Cruz</h6>
                             <small class="text-muted">Reviewed: Shopee Sneakers</small>
