@@ -14,7 +14,7 @@ class Register extends Model
 
     protected $table = 'register_tb';
 
-    protected $fillable = ['name', 'email', 'password', 'status'];
+    protected $fillable = ['name', 'email', 'password', 'status', 'address'];
 
     protected $hidden = ['password'];
 }

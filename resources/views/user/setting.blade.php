@@ -5,6 +5,9 @@
     <h2 class="fw-bold mb-4 text-primary">
         <i class="fas fa-cog me-2 text-primary"></i> Account Settings
     </h2>
+    @if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
     <div class="row g-4">
         <!-- Profile Info -->
@@ -58,13 +61,44 @@
                     <h5 class="card-title mb-3 fw-semibold">
                         <i class="fas fa-map-marker-alt me-2 text-secondary"></i> Shipping Address
                     </h5>
-                    <p>Brgy. San Isidro, LSPU Laguna, Philippines</p>
-                    <a href="#" class="btn btn-sm btn-outline-success rounded-pill">
+                    <p>{{ $user->address ?? 'No address set' }}</p>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-sm btn-outline-success rounded-pill" data-bs-toggle="modal" data-bs-target="#editAddressModal">
                         <i class="fas fa-edit me-1"></i> Edit Address
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="editAddressModal" tabindex="-1" aria-labelledby="editAddressModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4 border-0 shadow-lg">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editAddressModalLabel">Edit Shipping Address</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{ route('update.address') }}" method="POST">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="address" class="form-label fw-semibold">Address</label>
+                                <input type="text" name="address" id="address"
+                                    class="form-control rounded-3"
+                                    value="{{ old('address', $user->address) }}"
+                                    placeholder="Enter your address">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success rounded-pill">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
         <!-- 🔴 Delete Account -->
         <div class="col-md-12">

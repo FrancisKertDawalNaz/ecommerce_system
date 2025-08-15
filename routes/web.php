@@ -59,3 +59,5 @@ Route::get('/live-search', [App\Http\Controllers\ProductController::class, 'live
 
 Route::post('/admin/customers/{id}/ban', [CustomerController::class, 'ban'])->name('customers.ban');
 Route::post('/admin/customers/{id}/unban', [CustomerController::class, 'unban'])->name('customers.unban');
+
+Route::post('/update-address', [CustomerController::class, 'updateAddress'])->name('update.address');

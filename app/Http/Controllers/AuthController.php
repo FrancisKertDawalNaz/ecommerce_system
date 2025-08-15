@@ -67,6 +67,8 @@ class AuthController extends Controller
                     'id' => $user->id,
                     'name' => $user->name,
                     'email' => $user->email,
+                    'status' => $user->status,
+                    'address' => $user->address, // Add address to session
                 ]
             ]);
 
@@ -99,8 +101,17 @@ class AuthController extends Controller
 
     public function setting()
     {
-        return view('user.setting');
+        $sessionUser = session('loggedUser');
+
+        if (!$sessionUser || !isset($sessionUser['id'])) {
+            return redirect()->route('login')->with('error', 'Please login first.');
+        }
+
+        $user = Register::find($sessionUser['id']);
+
+        return view('user.setting', compact('user'));
     }
+
 
     public function logout(Request $request)
     {
