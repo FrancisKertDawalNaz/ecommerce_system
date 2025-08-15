@@ -105,6 +105,7 @@
             Delete Account
         </button>
 
+
         <!-- Modal -->
         <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
             <div class="modal-dialog">
