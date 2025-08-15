@@ -100,25 +100,35 @@
         </div>
 
 
-        <!-- 🔴 Delete Account -->
-        <div class="col-md-12">
-            <div class="card shadow-sm border-0 rounded-4 border-danger">
-                <div class="card-body">
-                    <h5 class="card-title mb-3 fw-semibold text-danger">
-                        <i class="fas fa-trash-alt me-2"></i> Delete Account
-                    </h5>
-                    <p class="text-muted">Once your account is deleted, all your data will be permanently removed. This action cannot be undone.</p>
+        <!-- Delete Account Button -->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+            Delete Account
+        </button>
 
-                    <form action="#" method="POST" onsubmit="return confirm('Are you sure you want to delete your account?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger rounded-pill">
-                            <i class="fas fa-trash me-1"></i> Delete My Account
-                        </button>
-                    </form>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="deleteAccountModalLabel">Confirm Delete</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete your account? This action cannot be undone.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                        <form action="{{ route('account.delete') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Yes, Delete My Account</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+
 
     </div>
 </div>

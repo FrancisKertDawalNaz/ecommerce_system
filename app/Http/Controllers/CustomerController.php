@@ -44,4 +44,28 @@ class CustomerController extends Controller
 
         return redirect()->back()->with('success', 'Address updated successfully.');
     }
+
+    public function deleteAccount(Request $request)
+    {
+        $sessionUser = session('loggedUser');
+
+        if (!$sessionUser || !isset($sessionUser['id'])) {
+            return redirect()->route('login')->with('error', 'Please login first.');
+        }
+
+        $user = Register::find($sessionUser['id']);
+
+        if ($user) {
+            $user->delete();
+
+            // Clear session
+            $request->session()->forget('loggedUser');
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return redirect()->route('login')->with('success', 'Your account has been deleted.');
+        }
+
+        return redirect()->back()->with('error', 'User not found.');
+    }
 }
