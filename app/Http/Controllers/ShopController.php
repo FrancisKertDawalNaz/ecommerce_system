@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Wishlist;
+use App\Models\Order;
 
 class ShopController extends Controller
 {
