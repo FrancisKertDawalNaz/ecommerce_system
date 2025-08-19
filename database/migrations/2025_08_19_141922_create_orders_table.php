@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('product_id');
+            $table->integer('quantity')->default(1);
+            $table->decimal('total_price', 10, 2);
+            $table->string('status')->default('pending'); // pending, processing, completed, cancelled
             $table->timestamps();
         });
     }
