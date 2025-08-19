@@ -63,3 +63,7 @@ Route::post('/admin/customers/{id}/unban', [CustomerController::class, 'unban'])
 Route::post('/update-address', [CustomerController::class, 'updateAddress'])->name('update.address');
 
 Route::delete('/account/delete', [CustomerController::class, 'deleteAccount'])->name('account.delete');
+
+Route::put('/profile/update', [AuthController::class, 'update'])->name('profile.update');
+
+Route::put('/profile/change-password', [AuthController::class, 'changePassword'])->name('profile.changePassword');

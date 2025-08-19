@@ -151,4 +151,43 @@ class AuthController extends Controller
 
         return redirect()->back()->with('success', 'Product added successfully!');
     }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+        ]);
+
+        // Example kung naka-session yung user data
+        $user = Register::find(session('loggedUser')['id']);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        // Update session info
+        session()->put('loggedUser', $user->toArray());
+
+        return redirect()->back()->with('success', 'Profile updated successfully.');
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:6|confirmed',
+        ]);
+
+        $user = Register::find(session('loggedUser')['id']);
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()->back()->with('error', 'Current password is incorrect.');
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Password changed successfully.');
+    }
 }

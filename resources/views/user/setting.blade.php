@@ -19,7 +19,8 @@
                     </h5>
                     <p><strong>Name: </strong>{{ session('loggedUser')['name'] ?? 'User' }}</p>
                     <p><strong>Email: </strong>{{ session('loggedUser')['email'] ?? 'User' }}</p>
-                    <a href="#" class="btn btn-sm btn-outline-primary rounded-pill">
+                    <a href="#" class="btn btn-sm btn-outline-primary rounded-pill" data-bs-toggle="modal"
+                        data-bs-target="#editProfileModal">
                         <i class="fas fa-edit me-1"></i> Edit Profile
                     </a>
                 </div>
@@ -32,7 +33,8 @@
                 <div class="card-body">
                     <h5 class="card-title mb-3 fw-semibold">
                         <i class="fas fa-lock me-2 text-secondary"></i> Security
-                    </h5> <a href="#" class="btn btn-sm btn-outline-danger rounded-pill">
+                    </h5> <a href="#" class="btn btn-sm btn-outline-danger rounded-pill" data-bs-toggle="modal"
+                        data-bs-target="#changePasswordModal">
                         <i class="fas fa-key me-1"></i> Change Password
                     </a>
                 </div>
@@ -129,8 +131,79 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
+
+<!-- Edit Profile Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header">
+                <h5 class="modal-title fw-semibold" id="editProfileModalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="{{ route('profile.update') }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label fw-medium">Name</label>
+                        <input type="text" class="form-control rounded-pill" id="name" name="name"
+                            value="{{ session('loggedUser')['name'] ?? '' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label fw-medium">Email</label>
+                        <input type="email" class="form-control rounded-pill" id="email" name="email"
+                            value="{{ session('loggedUser')['email'] ?? '' }}" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary rounded-pill">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header">
+        <h5 class="modal-title fw-semibold" id="changePasswordModalLabel">Change Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <form action="{{ route('profile.changePassword') }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="current_password" class="form-label fw-medium">Current Password</label>
+            <input type="password" class="form-control rounded-pill" id="current_password" name="current_password" required>
+          </div>
+          <div class="mb-3">
+            <label for="new_password" class="form-label fw-medium">New Password</label>
+            <input type="password" class="form-control rounded-pill" id="new_password" name="new_password" required>
+          </div>
+          <div class="mb-3">
+            <label for="new_password_confirmation" class="form-label fw-medium">Confirm New Password</label>
+            <input type="password" class="form-control rounded-pill" id="new_password_confirmation" name="new_password_confirmation" required>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-danger rounded-pill">Update Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 @endsection
