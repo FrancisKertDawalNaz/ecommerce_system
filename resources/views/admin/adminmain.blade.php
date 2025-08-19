@@ -30,7 +30,7 @@
                     </div>
                     <div>
                         <h6 class="mb-0">Orders</h6>
-                        <h4 class="fw-bold mb-0">245</h4>
+                        <h4 class="fw-bold mb-0">{{$userOrder}}</h4>
                     </div>
                 </div>
             </div>
