@@ -67,3 +67,4 @@ Route::delete('/account/delete', [CustomerController::class, 'deleteAccount'])->
 Route::put('/profile/update', [AuthController::class, 'update'])->name('profile.update');
 
 Route::put('/profile/change-password', [AuthController::class, 'changePassword'])->name('profile.changePassword');
+Route::post('/order/buy-now/{id}', [OrderController::class, 'buyNow'])->name('order.buyNow');
