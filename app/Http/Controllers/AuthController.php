@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Order;
 
 class AuthController extends Controller
 {
@@ -91,7 +92,19 @@ class AuthController extends Controller
 
     public function orders()
     {
-        return view('user.orders');
+        $sessionUser = session('loggedUser');
+
+        if (!$sessionUser || !isset($sessionUser['id'])) {
+            return redirect()->route('login')->with('error', 'Please login first.');
+        }
+
+        $orders = Order::with('product')
+            ->where('user_id', $sessionUser['id'])
+            ->latest()
+            ->get();
+
+        // IMPORTANT: pass $orders to the view
+        return view('user.orders', compact('orders'));
     }
 
     public function wishlist()

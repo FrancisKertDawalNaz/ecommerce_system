@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('loading');
@@ -69,3 +70,7 @@ Route::put('/profile/update', [AuthController::class, 'update'])->name('profile.
 Route::put('/profile/change-password', [AuthController::class, 'changePassword'])->name('profile.changePassword');
 
 Route::post('/order/buy-now/{id}', [ProductController::class, 'buyNow'])->name('order.buyNow');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/my-orders', [OrderController::class, 'index'])->name('orders.index');
+});
