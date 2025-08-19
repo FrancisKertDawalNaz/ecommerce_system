@@ -8,7 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerController;
-
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('loading');
@@ -67,4 +67,5 @@ Route::delete('/account/delete', [CustomerController::class, 'deleteAccount'])->
 Route::put('/profile/update', [AuthController::class, 'update'])->name('profile.update');
 
 Route::put('/profile/change-password', [AuthController::class, 'changePassword'])->name('profile.changePassword');
-Route::post('/order/buy-now/{id}', [OrderController::class, 'buyNow'])->name('order.buyNow');
+
+Route::post('/order/buy-now/{id}', [ProductController::class, 'buyNow'])->name('order.buyNow');
