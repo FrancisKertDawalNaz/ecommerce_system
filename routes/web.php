@@ -74,3 +74,5 @@ Route::post('/order/buy-now/{id}', [ProductController::class, 'buyNow'])->name('
 Route::middleware(['auth'])->group(function () {
     Route::get('/my-orders', [OrderController::class, 'index'])->name('orders.index');
 });
+
+Route::get('/user/userdashboard', [ProductController::class, 'userdashboard'])->name('user.dashboard');

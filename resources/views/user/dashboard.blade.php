@@ -14,7 +14,7 @@
                     </div>
                     <div>
                         <h6 class="mb-1 text-secondary">Total Orders</h6>
-                        <h3 class="fw-bold mb-0">1</h3>
+                        <h3 class="fw-bold mb-0">{{$Orders}}</h3>
                     </div>
                 </div>
             </div>

@@ -82,7 +82,10 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        return view('user.dashboard');
+        $sessionUser = session('loggedUser');
+        $Orders = Order::where('user_id', $sessionUser['id'])->count();
+
+        return view('user.dashboard', compact('Orders'));
     }
 
     public function shop()

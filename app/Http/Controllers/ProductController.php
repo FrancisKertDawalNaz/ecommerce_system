@@ -41,4 +41,5 @@ class ProductController extends Controller
 
         return redirect()->route('orders')->with('success', 'Order placed successfully for ' . $product->name . '!');
     }
+
 }
