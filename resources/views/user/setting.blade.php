@@ -93,8 +93,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-success rounded-pill">Save Changes</button>
+                            <button type="button" class="btn btn-secondary rounded-3" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success rounded-3">Save Changes</button>
                         </div>
                     </form>
                 </div>
@@ -160,8 +160,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary rounded-pill">Save Changes</button>
+                    <button type="button" class="btn btn-secondary rounded-3" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary rounded-3">Save Changes</button>
                 </div>
             </form>
         </div>
@@ -184,21 +184,21 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="current_password" class="form-label fw-medium">Current Password</label>
-            <input type="password" class="form-control rounded-pill" id="current_password" name="current_password" required>
+            <input type="password" class="form-control rounded-3" id="current_password" name="current_password" required>
           </div>
           <div class="mb-3">
             <label for="new_password" class="form-label fw-medium">New Password</label>
-            <input type="password" class="form-control rounded-pill" id="new_password" name="new_password" required>
+            <input type="password" class="form-control rounded-3" id="new_password" name="new_password" required>
           </div>
           <div class="mb-3">
             <label for="new_password_confirmation" class="form-label fw-medium">Confirm New Password</label>
-            <input type="password" class="form-control rounded-pill" id="new_password_confirmation" name="new_password_confirmation" required>
+            <input type="password" class="form-control rounded-3" id="new_password_confirmation" name="new_password_confirmation" required>
           </div>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-danger rounded-pill">Update Password</button>
+          <button type="button" class="btn btn-secondary rounded-3" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-danger rounded-3">Update Password</button>
         </div>
       </form>
     </div>
