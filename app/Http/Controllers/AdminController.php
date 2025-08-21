@@ -6,6 +6,7 @@ use App\Models\admin_register;
 use Illuminate\Http\Request;
 use App\Models\Register;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Order;
 
 class AdminController extends Controller
 {
@@ -41,7 +42,7 @@ class AdminController extends Controller
 
     public function admindashboard()
     {
-        return view('admin.adminmain');
+        return view('admin.adminmain', compact('recentOrders'));
     }
 
     public function product()
