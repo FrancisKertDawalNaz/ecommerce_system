@@ -1,13 +1,13 @@
 @extends('user.layouts.app')
 
 @section('content')
-<div class="container py-4">
+<div class="content-scrollable px-4 py-5">
     <h1 class="fw-bold text-primary mb-3">Welcome to the Dashboard</h1>
     <!-- Dashboard Summary Cards -->
     <div class="row g-4 mb-4">
         <!-- Total Orders -->
         <div class="col-md-3 col-sm-6">
-            <div class="card border-primary shadow-sm rounded-4 p-3">
+            <div class="card border-primary shadow-sm rounded-4 p-3 h-100">
                 <div class="card-body d-flex align-items-center gap-3">
                     <div class="bg-primary text-white rounded-circle p-3 me-3">
                         <i class="fas fa-shopping-cart fa-lg"></i>
@@ -22,7 +22,7 @@
 
         <!-- Delivered -->
         <div class="col-md-3">
-            <div class="card border-primary shadow-sm rounded-4 p-3">
+            <div class="card border-primary shadow-sm rounded-4 p-3 h-100">
                 <div class="card-body d-flex align-items-center gap-3">
                     <div class="bg-success text-white rounded-circle p-3 me-3">
                         <i class="fas fa-truck fa-lg"></i>
@@ -37,7 +37,7 @@
 
         <!-- Pending -->
         <div class="col-md-3">
-            <div class="card border-primary shadow-sm rounded-4 p-3">
+            <div class="card border-primary shadow-sm rounded-4 p-3 h-100">
                 <div class="card-body d-flex align-items-center gap-3">
                     <div class="bg-warning text-white rounded-circle p-3 me-3">
                         <i class="fas fa-clock fa-lg"></i>
@@ -52,7 +52,7 @@
 
         <!-- Canceled -->
         <div class="col-md-3">
-            <div class="card border-primary shadow-sm rounded-4 p-3">
+            <div class="card border-primary shadow-sm rounded-4 p-3 h-100">
                 <div class="card-body d-flex align-items-center gap-3">
                     <div class="bg-danger text-white rounded-circle p-3 me-3">
                         <i class="fas fa-times-circle fa-lg"></i>
@@ -87,38 +87,43 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse($recentOrders as $order)
                         <tr class="border-bottom">
-                            <td class="fw-semibold text-primary">#ORD-1001</td>
-                            <td>July 25, 2025</td>
+                            <td class="fw-semibold text-primary">#ORD-{{ $order->id }}</td>
+                            <td>{{ $order->created_at->format('F d, Y') }}</td>
                             <td>
+                                @if($order->status === 'delivered')
                                 <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1">
                                     <i class="fas fa-check-circle me-1"></i> Delivered
                                 </span>
-                            </td>
-                            <td><strong>₱1,250.00</strong></td>
-                            <td class="text-end">
-                                <a href="#" class="btn btn-sm btn-outline-primary rounded-pill px-3 shadow-sm">
-                                    <i class="fas fa-eye me-1"></i> View
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-bottom">
-                            <td class="fw-semibold text-primary">#ORD-1002</td>
-                            <td>July 26, 2025</td>
-                            <td>
+                                @elseif($order->status === 'pending')
                                 <span class="badge bg-warning-subtle text-warning border border-warning-subtle rounded-pill px-3 py-1">
                                     <i class="fas fa-hourglass-half me-1"></i> Pending
                                 </span>
+                                @elseif($order->status === 'canceled')
+                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1">
+                                    <i class="fas fa-times-circle me-1"></i> Canceled
+                                </span>
+                                @else
+                                <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle rounded-pill px-3 py-1">
+                                    <i class="fas fa-info-circle me-1"></i> {{ ucfirst($order->status) }}
+                                </span>
+                                @endif
                             </td>
-                            <td><strong>₱560.00</strong></td>
+                            <td><strong>₱{{ number_format($order->total_price, 2) }}</strong></td>
                             <td class="text-end">
-                                <a href="#" class="btn btn-sm btn-outline-primary rounded-pill px-3 shadow-sm">
+                                <a href="{{ route('orders.index') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3 shadow-sm">
                                     <i class="fas fa-eye me-1"></i> View
                                 </a>
                             </td>
                         </tr>
-                        <!-- Add more rows dynamically -->
+                        @empty
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">No recent orders found.</td>
+                        </tr>
+                        @endforelse
                     </tbody>
+
                 </table>
             </div>
         </div>

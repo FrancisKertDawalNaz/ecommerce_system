@@ -83,10 +83,24 @@ class AuthController extends Controller
     public function dashboard()
     {
         $sessionUser = session('loggedUser');
+
+        if (!$sessionUser || !isset($sessionUser['id'])) {
+            return redirect()->route('login')->with('error', 'Please login first.');
+        }
+
+        // Count total orders (para sa cards)
         $Orders = Order::where('user_id', $sessionUser['id'])->count();
 
-        return view('user.dashboard', compact('Orders'));
+        // Kunin recent orders ng user with product info
+        $recentOrders = Order::with('product')
+            ->where('user_id', $sessionUser['id'])
+            ->latest()
+            ->take(5) // limit to latest 5 orders
+            ->get();
+
+        return view('user.dashboard', compact('Orders', 'recentOrders'));
     }
+
 
     public function shop()
     {
