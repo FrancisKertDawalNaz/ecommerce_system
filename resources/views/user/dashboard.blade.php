@@ -83,7 +83,6 @@
                             <th scope="col">Date</th>
                             <th scope="col">Status</th>
                             <th scope="col">Total</th>
-                            <th scope="col" class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,11 +110,6 @@
                                 @endif
                             </td>
                             <td><strong>₱{{ number_format($order->total_price, 2) }}</strong></td>
-                            <td class="text-end">
-                                <a href="{{ route('orders.index') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3 shadow-sm">
-                                    <i class="fas fa-eye me-1"></i> View
-                                </a>
-                            </td>
                         </tr>
                         @empty
                         <tr>
@@ -123,7 +117,6 @@
                         </tr>
                         @endforelse
                     </tbody>
-
                 </table>
             </div>
         </div>

@@ -149,12 +149,12 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label fw-medium">Name</label>
-                        <input type="text" class="form-control rounded-pill" id="name" name="name"
+                        <input type="text" class="form-control rounded-3" id="name" name="name"
                             value="{{ session('loggedUser')['name'] ?? '' }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label fw-medium">Email</label>
-                        <input type="email" class="form-control rounded-pill" id="email" name="email"
+                        <input type="email" class="form-control rounded-3" id="email" name="email"
                             value="{{ session('loggedUser')['email'] ?? '' }}" required>
                     </div>
                 </div>
